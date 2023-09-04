@@ -1,0 +1,10 @@
+{
+  "loan": {
+    "title": "Hello from Loan",
+    "content": "This is content related to a loan."
+  },
+  "refinance": {
+    "title": "Hello from Refinance",
+    "content": "This is content related to refinance."
+  }
+}
