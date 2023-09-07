@@ -67,7 +67,7 @@ import {
 } from "~/src/templates/refinance/refinance-calc.ts";
 import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
 import tooltip from "../../shared/components/tooltip.vue";
-
+// 
 </script>
 
 <style scoped>
