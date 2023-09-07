@@ -64,7 +64,7 @@ import {
   loanTerm,
   formattedAmount,
   calculateAmount,
-} from "~/src/templates/loan-payment/loan-payment-calc.ts";
+} from "~/src/templates/refinance/refinance-calc.ts";
 import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
 import tooltip from "../../shared/components/tooltip.vue";
 
