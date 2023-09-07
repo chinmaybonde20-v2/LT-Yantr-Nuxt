@@ -1,54 +1,41 @@
 <template>
   <div>
     <DefaultLayout>
-      <!-- LEFT -->
       <template v-slot:leftColumn>
         <div class="inputs">
           <div class="in-grp">
-            <!-- input component -->
             <div class="input-group">
-              <label for="loan-amount"
-                >Loan Amount  <span><tooltip :pageId="'loan'" /></span>
-              </label>
-
-              <input
-                id="loan-amount"
+              <NumberInput
+                name="amount"
+                label="Loan Amount"
                 type="number"
-                v-model="loanAmount"
-                @input="calculateAmount"
+                :value="amount"
+                @input-change="updateValue"
               />
             </div>
-            <!-- input component -->
             <div class="input-group">
-              <label for="interest-rate">Interest Rate</label>
-              <input
-                id="interest-rate"
+              <NumberInput
+                name="interest"
+                label="Loan Interest"
                 type="number"
-                v-model="interestRate"
-                @input="calculateAmount"
+                :value="interest"
+                @input-change="updateValue"
               />
             </div>
-            <!-- dropdown component -->
             <div class="input-group">
-              <label for="loan-term">Loan Term</label>
-              <select
-                id="loan-term"
-                v-model="loanTerm"
-                @input="calculateAmount"
-              >
-                <option value="1">1 Year</option>
-                <option value="2">2 Years</option>
-                <option value="3">3 Years</option>
-              </select>
+              <Dropdown @tenure-change="updateTenure" />
             </div>
           </div>
         </div>
       </template>
-      <!-- RIGHT -->
+
+
       <template v-slot:rightColumn>
         <div class="right-column">
-          <h3 class="title">Your monthly payment will be:</h3>
-          <h1 class="amount">{{ formattedAmount }}</h1>
+          <div class="amount">
+            <h1>{{ monthlyPayment }}</h1>
+          </div>
+
           <h3>Ready for the next step?</h3>
           <button class="get-offer-button">Get Free Loan Offer</button>
         </div>
@@ -56,20 +43,61 @@
     </DefaultLayout>
   </div>
 </template>
-
-<script setup>
-import {
-  loanAmount,
-  interestRate,
-  loanTerm,
-  formattedAmount,
-  calculateAmount,
-} from "~/src/templates/loan-payment/loan-payment-calc.ts";
+<script>
+import NumberInput from "../../shared/components/NumberInput.vue";
+import Dropdown from "../../shared/components/Dropdown.vue";
 import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
-import tooltip from "../../shared/components/tooltip.vue";
 
-// import MyTrial from "./MyTrial.vue";
-// import MyTrial from "../../shared/components/MyTrial.vue";
+export default {
+  components: {
+    NumberInput,
+    Dropdown,
+    DefaultLayout,
+  },
+  data() {
+    return {
+      amount: 10000,
+      interest: 8,
+      tenure: 12,
+      monthlyPayment: "",
+    };
+  },
+  methods: {
+    updateValue(name, value) {
+      this[name] = value;
+      this.calculateMonthlyPayment();
+    },
+    updateTenure(tenure) {
+      this.tenure = tenure;
+      this.calculateMonthlyPayment();
+    },
+    calculateMonthlyPayment() {
+      const principal = parseFloat(this.amount);
+      const annualInterest = parseFloat(this.interest) / 100;
+      const monthlyInterest = annualInterest / 12;
+      const numberOfPayments = this.tenure;
+
+      if (
+        isNaN(principal) ||
+        isNaN(annualInterest) ||
+        isNaN(numberOfPayments)
+      ) {
+        this.monthlyPayment = "Invalid input";
+      } else {
+        const numerator =
+          principal *
+          monthlyInterest *
+          Math.pow(1 + monthlyInterest, numberOfPayments);
+        const denominator = Math.pow(1 + monthlyInterest, numberOfPayments) - 1;
+        const monthlyPayment = (numerator / denominator).toFixed(2);
+        this.monthlyPayment = `Monthly Payment: $${monthlyPayment}`;
+      }
+    },
+  },
+  created() {
+    this.calculateMonthlyPayment();
+  },
+};
 </script>
 
 <style scoped>
