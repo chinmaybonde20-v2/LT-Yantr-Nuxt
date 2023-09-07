@@ -6,7 +6,6 @@
         <h4>Calculators</h4>
         <!-- my link -->
         <hr />
-        <nuxt-link to="/trial">Trial</nuxt-link>
         <nuxt-link to="/loan-payment-page">Loan Payment Calculator</nuxt-link>
         <nuxt-link to="/refinance-page">Refinance Calculator</nuxt-link>
         <hr />
