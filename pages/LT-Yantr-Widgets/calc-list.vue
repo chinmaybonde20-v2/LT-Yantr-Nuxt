@@ -6,7 +6,9 @@
         <h4>Calculators</h4>
         <!-- my link -->
         <hr />
+        <!-- <nuxt-link to="/GraphQL">GraphQL</nuxt-link> -->
         <nuxt-link to="/loan-payment-page">Loan Payment Calculator</nuxt-link>
+        <nuxt-link to="/student-loan-refinance-page">Student Loan Refinance Calculator</nuxt-link>
         <nuxt-link to="/refinance-page">Refinance Calculator</nuxt-link>
         <hr />
         <a href="/apps/refinance.html">Refinance Calculator</a>
@@ -153,8 +155,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 /* Import the stylesheet */
