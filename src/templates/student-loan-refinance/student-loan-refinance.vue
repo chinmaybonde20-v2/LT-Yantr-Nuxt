@@ -65,40 +65,41 @@
 
             <h3>Lifetime Savings: {{ lifetimeSavings }}</h3>
             <button class="get-offer-button">View Free Loan Offers</button>
-          </div><hr>
+          </div>
+          <hr />
           <!-- Table -->
           <div class="mb-mt">
-                <h4>Student loan refinance breakdown</h4>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <tr>
-                            <th></th>
-                            <th><b>Current Loan</b></th>
-                            <th><b>Refinanced Loan</b></th>
-                        </tr>
-                        <tr>
-                            <td><b>Interest Rate</b></td>
-                            <td>{{ currentInterestRate }}</td>
-                            <td>{{ displayNewInterestRateUsedForCalc }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Monthly Payment</b></td>
-                            <td>{{ displayCurrentMonthlyPayment }}</td>
-                            <td>{{ displayMonthlyPayment }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Months to Pay Off</b></td>
-                            <td>{{ NoOfMonthlyPaymentLeft }} months</td>
-                            <td>{{ noOfMonthsPaymentForRefiLoan }} months</td>
-                        </tr>
-                        <tr>
-                            <td><b>Total Cost of Loan</b></td>
-                            <td>{{ displayCurrentLoanLifeTimePayment }}</td>
-                            <td>{{ displayRefiLoanLifeTimePayment }}</td>
-                        </tr>
-                    </table>
-                </div>
+            <h4>Student loan refinance breakdown</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <tr>
+                  <th></th>
+                  <th><b>Current Loan</b></th>
+                  <th><b>Refinanced Loan</b></th>
+                </tr>
+                <tr>
+                  <td><b>Interest Rate</b></td>
+                  <td>{{ currentLoanInterestRate.toFixed(2) }} %</td>
+                  <td>{{ refinanceLoanInterestRate.toFixed(2) }} %</td>
+                </tr>
+                <tr>
+                  <td><b>Monthly Payment</b></td>
+                  <td>${{ currentLoanMonthlyPayment.toFixed(2) }}</td>
+                  <td>${{ refinanceLoanMonthlyPayment.toFixed(2) }}</td>
+                </tr>
+                <tr>
+                  <td><b>Months to Pay Off</b></td>
+                  <td>{{ currentLoanMonthsToPayOff }} months</td>
+                  <td>{{ refinanceLoanMonthsToPayOff }} months</td>
+                </tr>
+                <tr>
+                  <td><b>Total Cost of Loan</b></td>
+                  <td>${{ currentLoanTotalCost.toFixed(2) }}</td>
+                  <td>${{ refinanceLoanTotalCost.toFixed(2) }}</td>
+                </tr>
+              </table>
             </div>
+          </div>
         </div>
       </template>
     </DefaultLayout>
@@ -117,12 +118,20 @@ export default {
   },
   data() {
     return {
-      totalBalance: 10000,
-      numPaymentsLeft: 3,
-      totalMonthlyPayment: 5000,
-      tenure: 12,
-      refinanceInterestRate: 10,
+      totalBalance: 40000,
+      numPaymentsLeft: 72,
+      totalMonthlyPayment: 700,
+      tenure: 10, // Refinance Rate Term (in years)
+      refinanceInterestRate: 6.00, // Refinance Interest Rate
       monthlyPayment: "",
+      currentLoanInterestRate: 7.932, // Current Loan Interest Rate (for demo)
+      refinanceLoanInterestRate: 6.000, // Refinanced Loan Interest Rate (for demo)
+      currentLoanMonthlyPayment: 700, // Current Loan Monthly Payment (for demo)
+      refinanceLoanMonthlyPayment: 444.08, // Refinanced Loan Monthly Payment (for demo)
+      currentLoanMonthsToPayOff: 72, // Current Loan Months to Pay Off (for demo)
+      refinanceLoanMonthsToPayOff: 120, // Refinanced Loan Months to Pay Off (for demo)
+      currentLoanTotalCost: 50400, // Current Loan Total Cost (for demo)
+      refinanceLoanTotalCost: 53289.84, // Refinanced Loan Total Cost (for demo)
     };
   },
   methods: {
@@ -135,21 +144,40 @@ export default {
       this.calculateMonthlyPayment();
     },
     calculateMonthlyPayment() {
+      // Convert input values to numbers
       const totalBalance = parseFloat(this.totalBalance);
       const numPaymentsLeft = parseFloat(this.numPaymentsLeft);
       const totalMonthlyPayment = parseFloat(this.totalMonthlyPayment);
       const refinanceInterestRate = parseFloat(this.refinanceInterestRate);
       const tenure = parseFloat(this.tenure);
 
-      const monthlyPayment =
-        totalBalance +
-        numPaymentsLeft +
-        totalMonthlyPayment +
-        refinanceInterestRate +
-        tenure;
+      // Calculate the monthly payment for the current loans
+      const currentMonthlyPayment = totalBalance / numPaymentsLeft;
 
-      this.monthlyPayment = monthlyPayment.toFixed(2);
-      this.lifetimeSavings = this.monthlyPayment - 1;
+      // Calculate the monthly payment for the refinanced loan
+      const refiMonthlyPayment =
+        (totalBalance + (refinanceInterestRate / 100) * totalBalance) /
+        (tenure * 12);
+
+      // Calculate the estimated monthly savings
+      const monthlySavings = currentMonthlyPayment - refiMonthlyPayment;
+
+      // Display the estimated monthly savings
+      this.monthlyPayment = monthlySavings.toFixed(2);
+
+      // Calculate and display lifetime savings
+      const lifetimeSavings = monthlySavings * numPaymentsLeft;
+      this.lifetimeSavings = lifetimeSavings.toFixed(2);
+
+      // Calculate and display table values
+      this.currentLoanInterestRate = 7.932;
+      this.refinanceLoanInterestRate = refinanceInterestRate;
+      this.currentLoanMonthlyPayment = currentMonthlyPayment;
+      this.refinanceLoanMonthlyPayment = refiMonthlyPayment;
+      this.currentLoanMonthsToPayOff = numPaymentsLeft;
+      this.refinanceLoanMonthsToPayOff = tenure * 12;
+      this.currentLoanTotalCost = totalMonthlyPayment * numPaymentsLeft;
+      this.refinanceLoanTotalCost = refiMonthlyPayment * (tenure * 12);
     },
   },
   created() {
