@@ -1,0 +1,158 @@
+/* Reset some default styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Container for the entire content */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Input section styles */
+  .inputs {
+    background-color: #f1f3f3;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Title styles */
+  .title {
+    font-size: 40px;
+  }
+  
+  /* Column styles */
+  .left-column,
+  .right-column {
+    width: 50%;
+    padding: 20px;
+  }
+  
+  .left-column {
+    border-right: 1px solid #ccc;
+  }
+  
+  /* Input group styles */
+  .input-group {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Label styles */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Input and select styles */
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Right column styles */
+  .right-column {
+    text-align: center;
+  }
+  
+  /* Amount styles */
+  .amount {
+    color: #08c177;
+    font-size: 20px;
+  }
+  
+  /* Get offer button styles */
+  .get-offer-button {
+    padding: 10px;
+    width: 350px;
+    font-size: 20px;
+    background-color: #00aeef;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  /* Table styles */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid #ccc;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Margin styles */
+  .mb-mt {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .row {
+    display: flex; /* Use Flexbox for the row */
+    justify-content: space-between; /* Put space between columns */
+  }
+  
+  .left-column, .right-column {
+    flex-basis: 48%; /* Set the width of each column (adjust as needed) */
+  }/* Center text within a div */
+.center-text {
+  text-align: center;
+}
+
+/* Flex layout for containing two cards in a row */
+.row.contain-2-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center vertically within the row */
+}
+
+/* Style for card elements */
+.card {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 48%; /* Adjust the width as needed */
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.card-content {
+  padding: 10px;
+}

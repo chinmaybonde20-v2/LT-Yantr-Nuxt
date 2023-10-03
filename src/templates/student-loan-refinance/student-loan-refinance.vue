@@ -121,17 +121,17 @@ export default {
       totalBalance: 40000,
       numPaymentsLeft: 72,
       totalMonthlyPayment: 700,
-      tenure: 10, // Refinance Rate Term (in years)
-      refinanceInterestRate: 6.00, // Refinance Interest Rate
+      tenure: 10, 
+      refinanceInterestRate: 6.00,
       monthlyPayment: "",
-      currentLoanInterestRate: 7.932, // Current Loan Interest Rate (for demo)
-      refinanceLoanInterestRate: 6.000, // Refinanced Loan Interest Rate (for demo)
-      currentLoanMonthlyPayment: 700, // Current Loan Monthly Payment (for demo)
-      refinanceLoanMonthlyPayment: 444.08, // Refinanced Loan Monthly Payment (for demo)
-      currentLoanMonthsToPayOff: 72, // Current Loan Months to Pay Off (for demo)
-      refinanceLoanMonthsToPayOff: 120, // Refinanced Loan Months to Pay Off (for demo)
-      currentLoanTotalCost: 50400, // Current Loan Total Cost (for demo)
-      refinanceLoanTotalCost: 53289.84, // Refinanced Loan Total Cost (for demo)
+      currentLoanInterestRate: 7.932,
+      refinanceLoanInterestRate: 6.000, 
+      currentLoanMonthlyPayment: 700, 
+      refinanceLoanMonthlyPayment: 444.08,
+      currentLoanMonthsToPayOff: 72,
+      refinanceLoanMonthsToPayOff: 120, 
+      currentLoanTotalCost: 50400, 
+      refinanceLoanTotalCost: 53289.84, 
     };
   },
   methods: {

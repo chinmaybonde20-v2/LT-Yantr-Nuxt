@@ -3,11 +3,11 @@
     <div>
       <!-- Widget Code Begin -->
       <div>
-        <h3>Student Loan Refinance Calculator</h3>
+        <h3>Mortgage Payment Calculator</h3>
         <hr />
-        <StudentLoanRefinance />
+        <MortgagePaymentCalculator />
       </div>
-    
+
       <div class="calc-doc">
         <h3>Documentation</h3>
         <ul>
@@ -180,15 +180,13 @@
 </template>
 
 <script>
-import StudentLoanRefinance from "~/src/templates/student-loan-refinance/student-loan-refinance.vue";
+import MortgagePaymentCalculator from "~/src/templates/mortgage-payment/mortgage-payment-calculator.vue";
 
 export default {
   components: {
-    StudentLoanRefinance,
+    MortgagePaymentCalculator,
   },
 };
 </script>
 
-<style>
-/*  */
-</style>
+<style></style>

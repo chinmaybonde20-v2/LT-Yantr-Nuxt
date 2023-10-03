@@ -1,11 +1,13 @@
 <template>
+  <div>
     <div>
       <!-- Widget Code Begin -->
       <div>
-        <h3>Refinance Calculator</h3><hr>
-        <RefianceCalc />
+        <h3>Debt Consolidation Calculator</h3>
+        <hr />
+        <DebtConsodilation />
       </div>
-     
+
       <div class="calc-doc">
         <h3>Documentation</h3>
         <ul>
@@ -46,8 +48,8 @@
           <li>Attr Type => Number</li>
           <li>Attr Default => "50000"</li>
           <li>
-            Attr Description => To set LoanAmount value and used to calculate Loan
-            Payment data.
+            Attr Description => To set LoanAmount value and used to calculate
+            Loan Payment data.
           </li>
         </ul>
         <ul>
@@ -73,8 +75,8 @@
           <li>Attr Type => Number</li>
           <li>Attr Default => "0"</li>
           <li>
-            Attr Description => To show or hide "Amortization Breakdown" section,
-            set value to "1" or "0".
+            Attr Description => To show or hide "Amortization Breakdown"
+            section, set value to "1" or "0".
           </li>
         </ul>
         <ul>
@@ -174,17 +176,17 @@
         </ul>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import RefianceCalc from '~/src/templates/refinance/refinance-calc.vue';
-  
-  export default {
-    components: {
-      RefianceCalc
-    },
-  };
-  </script>
-  
-  <style>
-  </style>
+  </div>
+</template>
+
+<script>
+import DebtConsodilation from "~/src/templates/debt-consodilation/debt-consodilation.vue";
+
+export default {
+  components: {
+    DebtConsodilation,
+  },
+};
+</script>
+
+<style></style>

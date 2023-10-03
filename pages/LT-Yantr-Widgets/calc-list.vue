@@ -9,7 +9,10 @@
         <!-- <nuxt-link to="/GraphQL">GraphQL</nuxt-link> -->
         <nuxt-link to="/loan-payment-page">Loan Payment Calculator</nuxt-link>
         <nuxt-link to="/student-loan-refinance-page">Student Loan Refinance Calculator</nuxt-link>
-        <nuxt-link to="/refinance-page">Refinance Calculator</nuxt-link>
+        <nuxt-link to="/auto-loan-lite-page">Auto Loan Lite Calculator</nuxt-link>
+        <nuxt-link to="/debt-consodilation-page">Debt Consolidation Calculator</nuxt-link>
+        <nuxt-link to="/mortgage-payment-page">Mortgage Payment Calculator</nuxt-link>
+       
         <hr />
         <a href="/apps/refinance.html">Refinance Calculator</a>
         <a href="/apps/student-loan-refinance.html"

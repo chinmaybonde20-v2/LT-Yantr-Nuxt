@@ -6,9 +6,9 @@
 </template>
   
 <script setup>
-import calcList from './LT-Yantr-Widgets/calc-list.vue';
-
+import calcList from "./LT-Yantr-Widgets/calc-list.vue";
 </script>
   
 <style>
+
 </style>
