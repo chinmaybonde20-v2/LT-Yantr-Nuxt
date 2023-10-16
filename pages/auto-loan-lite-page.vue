@@ -2,7 +2,6 @@
     <div>
       <!-- Widget Code Begin -->
       <div>
-        <h3>Auto Loan Lite Calculator</h3><hr>
         <AutoLoanLite />
       </div>
      

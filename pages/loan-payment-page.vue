@@ -3,8 +3,6 @@
     <div>
       <!-- Widget Code Begin -->
       <div>
-        <h3>Loan Payment Calculator</h3>
-        <hr />
         <LoanPaymentCalc />
       </div>
 

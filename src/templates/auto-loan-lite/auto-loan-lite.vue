@@ -65,7 +65,7 @@
             </div>
             <div class="disc">
               <h3>We've found offers for this result:</h3>
-              <button class="get-offer-button">View Free Loan Offers</button>
+              <button class="get-offer-button">Compare Loan Offers</button>
               <p>Disclosures</p>
             </div>
           </div>
@@ -74,10 +74,10 @@
     </DefaultLayout>
   </div>
 </template>
-
 <script>
 import NumberInput from "../../shared/components/NumberInput.vue";
 import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
+import { calculateAutoPayment } from "../../shared/helpers/payment.js";
 
 export default {
   components: {
@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       totalLoanAmount: 25000,
-      interestRate: 2.50,
+      interestRate: 2.5,
       termInMonths: 48,
       autoPayment: "",
     };
@@ -98,12 +98,11 @@ export default {
       this.calculateAutoPayment();
     },
     calculateAutoPayment() {
-      const principal = parseFloat(this.totalLoanAmount);
-      const rate = parseFloat(this.interestRate) / 100 / 12; // Monthly interest rate
-      const term = parseInt(this.termInMonths);
-
-      const monthlyPayment = (principal * rate) / (1 - Math.pow(1 + rate, -term));
-      this.autoPayment = monthlyPayment.toFixed(2); // Display as two decimal places
+      this.autoPayment = calculateAutoPayment(
+        this.totalLoanAmount,
+        this.interestRate,
+        this.termInMonths
+      );
     },
   },
   created() {
@@ -111,6 +110,7 @@ export default {
   },
 };
 </script>
+
 
 
 <style scoped>

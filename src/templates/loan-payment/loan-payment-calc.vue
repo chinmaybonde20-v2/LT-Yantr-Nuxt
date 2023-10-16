@@ -23,12 +23,16 @@
               />
             </div>
             <div class="input-group">
-              <Dropdown @tenure-change="updateTenure" />
+              <Dropdown
+                label="Loan Tenure"
+                :options="dropdownOptions"
+                :selectedOption="tenure"
+                @tenure-change="updateTenure"
+              />
             </div>
           </div>
         </div>
       </template>
-
 
       <template v-slot:rightColumn>
         <div class="right-column">
@@ -43,61 +47,57 @@
     </DefaultLayout>
   </div>
 </template>
-<script>
+
+
+<script setup lang="ts">
+import { ref, watch, onMounted } from "vue";
 import NumberInput from "../../shared/components/NumberInput.vue";
 import Dropdown from "../../shared/components/Dropdown.vue";
 import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
+import payment from "../../shared/helpers/payment.js";
 
-export default {
-  components: {
-    NumberInput,
-    Dropdown,
-    DefaultLayout,
-  },
-  data() {
-    return {
-      amount: 10000,
-      interest: 8,
-      tenure: 12,
-      monthlyPayment: "",
-    };
-  },
-  methods: {
-    updateValue(name, value) {
-      this[name] = value;
-      this.calculateMonthlyPayment();
-    },
-    updateTenure(tenure) {
-      this.tenure = tenure;
-      this.calculateMonthlyPayment();
-    },
-    calculateMonthlyPayment() {
-      const principal = parseFloat(this.amount);
-      const annualInterest = parseFloat(this.interest) / 100;
-      const monthlyInterest = annualInterest / 12;
-      const numberOfPayments = this.tenure;
+const amount = ref(50000);
+const interest = ref(0.001);
+const tenure = ref(30);
+const monthlyPayment = ref("");
+const dropdownOptions = ref([
+  { value: 1, label: "1 Year" },
+  { value: 2, label: "2 Years" },
+  { value: 3, label: "3 Years" },
+  { value: 4, label: "4 Years" },
+  { value: 5, label: "5 Years" },
+  { value: 10, label: "10 Years" },
+  { value: 15, label: "15 Years" },
+  { value: 20, label: "20 Years" },
+  { value: 25, label: "25 Years" },
+  { value: 30, label: "30 Years" },
+  { value: 40, label: "40 Years" },
+]);
 
-      if (
-        isNaN(principal) ||
-        isNaN(annualInterest) ||
-        isNaN(numberOfPayments)
-      ) {
-        this.monthlyPayment = "Invalid input";
-      } else {
-        const numerator =
-          principal *
-          monthlyInterest *
-          Math.pow(1 + monthlyInterest, numberOfPayments);
-        const denominator = Math.pow(1 + monthlyInterest, numberOfPayments) - 1;
-        const monthlyPayment = (numerator / denominator).toFixed(2);
-        this.monthlyPayment = `Monthly Payment: $${monthlyPayment}`;
-      }
-    },
-  },
-  created() {
-    this.calculateMonthlyPayment();
-  },
+const updateValue = (name, value) => {
+  if (name === "amount") {
+    amount.value = value;
+  } else if (name === "interest") {
+    interest.value = value;
+  }
 };
+
+const updateTenure = (newTenure) => {
+  tenure.value = newTenure;
+};
+
+const calculateMonthlyPayment = () => {
+  const result = payment.calculateMonthlyPayment(
+    amount.value,
+    interest.value,
+    tenure.value
+  );
+  monthlyPayment.value = result;
+};
+
+watch([amount, interest, tenure], calculateMonthlyPayment);
+
+onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>

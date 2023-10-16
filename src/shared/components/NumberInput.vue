@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="name">{{ label }}:</label> <span><tooltip /></span><br />
+    <label :for="name">{{ label }}</label> <br />
     <input :type="type" :id="name" :value="value" @input="updateValue" />
   </div>
 </template>
@@ -24,3 +24,10 @@ export default {
   },
 };
 </script>
+
+<style>
+input{
+  padding: 10px;
+  width: 360px;
+}
+</style>
