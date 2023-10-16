@@ -14,7 +14,7 @@
                 @input-change="updateValue"
               />
             </div>
-            <!-- Input 2 -->
+            <!-- Input 2 d-->
             <div class="input-group">
               <NumberInput
                 name="termInMonths"
