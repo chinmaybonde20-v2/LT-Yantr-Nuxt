@@ -36,7 +36,12 @@
             </div>
             <!-- Dropdown 4 -->
             <div class="input-group">
-              <Dropdown label="Loan Term:" @tenure-change="updateTenure" />
+              <Dropdown
+                label="Loan Term"
+                :options="dropdownOptions"
+                :selectedOption="tenure"
+                @tenure-change="updateTenure"
+              />
             </div>
           </div>
         </div>
@@ -44,22 +49,21 @@
 
       <template v-slot:rightColumn>
         <div>
-  <div class="flex-container">
-    <h3 class="left-text">Consolidation loan amount:</h3>
-    <h3 class="right-text">${{ loanBalance }}</h3>
-  </div>
-  <div class="flex-container">
-    <h3 class="left-text">New Monthly Payment:</h3>
-    <h3 class="right-text txt-color">${{newMonthlyPayment}}</h3>
-  </div>
-  <hr />
-  <div class="flex-container">
-    <h3 class="left-text">Your Monthly Savings Would Be:</h3>
-    <h3 class="right-text txt-color-sav">${{monthlySaving}}</h3>
-  </div>
-  <button class="get-offer-button">Find Your Best Terms</button>
-</div>
-
+          <div class="flex-container">
+            <p class="left-text">Consolidation loan amount:</p>
+            <h2 class="right-text">${{ loanBalance }}</h2>
+          </div>
+          <div class="flex-container">
+            <p class="left-text">New Monthly Payment:</p>
+            <h3 class="right-text txt-color">${{ newMonthlyPayment }}</h3>
+          </div>
+          <hr />
+          <div class="flex-container">
+            <p class="left-text">Your Monthly Savings Would Be:</p>
+            <h2 class="right-text txt-color-sav">${{ monthlySaving }}</h2>
+          </div>
+          <button class="get-offer-button">Find Your Best Terms</button>
+        </div>
       </template>
     </DefaultLayout>
   </div>
@@ -80,40 +84,52 @@ export default {
       loanBalance: 25000,
       monthlyPayments: 1000,
       consoLoanRate: 7.99,
-      tenure: 12, 
+      tenure: 5,
       newMonthlyPayment: "",
       monthlySaving: "",
+      dropdownOptions: [
+        { value: 1, label: "1 Year" },
+        { value: 2, label: "2 Years" },
+        { value: 3, label: "3 Years" },
+        { value: 4, label: "4 Years" },
+        { value: 5, label: "5 Years" },
+        { value: 6, label: "6 Years" },
+        { value: 7, label: "7 Years" },
+        { value: 8, label: "8 Years" },
+        { value: 9, label: "9 Years" },
+        { value: 10, label: "10 Years" },
+      ],
     };
   },
   methods: {
-  updateValue(name, value) {
-    this[name] = value;
-    this.calculateMonthlyPayment();
-  },
-  updateTenure(tenure) {
-    this.tenure = tenure;
-    this.calculateMonthlyPayment();
-  },
-  calculateMonthlyPayment() {
-    // Constants for loan details
-    const loanBalance = this.loanBalance;
-    const monthlyPayments = this.monthlyPayments;
-    const consoLoanRate = this.consoLoanRate / 100; // Convert percentage to decimal
-    const tenureInMonths = this.tenure * 12;
+    updateValue(name, value) {
+      this[name] = value;
+      this.calculateMonthlyPayment();
+    },
+    updateTenure(tenure) {
+      this.tenure = tenure;
+      this.calculateMonthlyPayment();
+    },
+    calculateMonthlyPayment() {
+     
+      const loanBalance = this.loanBalance;
+      const monthlyPayments = this.monthlyPayments;
+      const consoLoanRate = this.consoLoanRate / 100; 
+      const tenureInMonths = this.tenure * 12;
 
-    // Calculate the new monthly payment
-    const newMonthlyPayment =
-      (loanBalance * (consoLoanRate / 12)) /
-      (1 - Math.pow(1 + consoLoanRate / 12, -tenureInMonths));
+    
+      const newMonthlyPayment =
+        (loanBalance * (consoLoanRate / 12)) /
+        (1 - Math.pow(1 + consoLoanRate / 12, -tenureInMonths));
 
-    // Calculate the monthly savings
-    const monthlySaving = monthlyPayments - newMonthlyPayment;
+ 
+      const monthlySaving = monthlyPayments - newMonthlyPayment;
 
-    // Update the data properties
-    this.newMonthlyPayment = newMonthlyPayment.toFixed(2);
-    this.monthlySaving = monthlySaving.toFixed(2);
+     
+      this.newMonthlyPayment = newMonthlyPayment.toFixed(2);
+      this.monthlySaving = monthlySaving.toFixed(2);
+    },
   },
-},
   created() {
     this.calculateMonthlyPayment();
   },

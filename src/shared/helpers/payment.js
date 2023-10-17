@@ -42,3 +42,19 @@ export default {
     }
   },
 };
+// payment.js
+
+export function calculateMonthlyPayment(vm) {
+  const loanBalance = vm.loanBalance;
+  // Retrieve other data properties from the Vue component
+
+  // Perform your calculation
+  const newMonthlyPayment =
+    (loanBalance * (vm.consoLoanRate / 12)) /
+    (1 - Math.pow(1 + vm.consoLoanRate / 12, -vm.tenure * 12));
+
+  const monthlySaving = vm.monthlyPayments - newMonthlyPayment;
+
+  vm.newMonthlyPayment = newMonthlyPayment.toFixed(2);
+  vm.monthlySaving = monthlySaving.toFixed(2);
+}

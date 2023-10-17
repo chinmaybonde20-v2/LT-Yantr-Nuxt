@@ -3,8 +3,7 @@
     <div>
       <!-- Widget Code Begin -->
       <div>
-        <h3>Debt Consolidation Calculator</h3>
-        <hr />
+       
         <DebtConsodilation />
       </div>
 
