@@ -35,9 +35,13 @@
               />
             </div>
             <!-- Dropdown 1 -->
+            
             <div class="input-group">
+
               <Dropdown
                 label="Refinance Rate Term:"
+                :options="dropdownOptions"
+                :selectedOption="tenure"
                 @tenure-change="updateTenure"
               />
             </div>
@@ -121,17 +125,21 @@ export default {
       totalBalance: 40000,
       numPaymentsLeft: 72,
       totalMonthlyPayment: 700,
-      tenure: 10, 
-      refinanceInterestRate: 6.00,
+      tenure: 10,
+      refinanceInterestRate: 6.0,
       monthlyPayment: "",
       currentLoanInterestRate: 7.932,
-      refinanceLoanInterestRate: 6.000, 
-      currentLoanMonthlyPayment: 700, 
+      refinanceLoanInterestRate: 6.0,
+      currentLoanMonthlyPayment: 700,
       refinanceLoanMonthlyPayment: 444.08,
       currentLoanMonthsToPayOff: 72,
-      refinanceLoanMonthsToPayOff: 120, 
-      currentLoanTotalCost: 50400, 
-      refinanceLoanTotalCost: 53289.84, 
+      refinanceLoanMonthsToPayOff: 120,
+      currentLoanTotalCost: 50400,
+      refinanceLoanTotalCost: 53289.84,
+      dropdownOptions: [
+        { value: 5, label: "5 Years" },
+        { value: 10, label: "10 Years" },
+      ],
     };
   },
   methods: {

@@ -1,13 +1,8 @@
 <template>
   <div>
-    <div>
-      <!-- Widget Code Begin -->
-      <div>
-      
-        <StudentLoanRefinance />
-      </div>
-    
-      <div class="calc-doc">
+    <AutoRefinanceCalc />
+    <hr>
+    <div class="calc-doc">
         <h3>Documentation</h3>
         <ul>
           <li>Attr => init-filter-title</li>
@@ -174,20 +169,13 @@
           </li>
         </ul>
       </div>
-    </div>
   </div>
 </template>
 
-<script>
-import StudentLoanRefinance from "~/src/templates/student-loan-refinance/student-loan-refinance.vue";
-
-export default {
-  components: {
-    StudentLoanRefinance,
-  },
-};
+<script setup lang="ts">
+import AutoRefinanceCalc from "../../nuxt-yantr-calc/src/templates/auto-refinance-calc.vue";
 </script>
 
 <style>
 /*  */
-</style>
+</style>  

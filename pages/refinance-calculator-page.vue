@@ -1,12 +1,9 @@
 <template>
-  <div>
     <div>
-      <!-- Widget Code Begin -->
       <div>
-      
-        <StudentLoanRefinance />
+        <RefinanceCalculator />
       </div>
-    
+     
       <div class="calc-doc">
         <h3>Documentation</h3>
         <ul>
@@ -47,8 +44,8 @@
           <li>Attr Type => Number</li>
           <li>Attr Default => "50000"</li>
           <li>
-            Attr Description => To set LoanAmount value and used to calculate
-            Loan Payment data.
+            Attr Description => To set LoanAmount value and used to calculate Loan
+            Payment data.
           </li>
         </ul>
         <ul>
@@ -74,8 +71,8 @@
           <li>Attr Type => Number</li>
           <li>Attr Default => "0"</li>
           <li>
-            Attr Description => To show or hide "Amortization Breakdown"
-            section, set value to "1" or "0".
+            Attr Description => To show or hide "Amortization Breakdown" section,
+            set value to "1" or "0".
           </li>
         </ul>
         <ul>
@@ -175,19 +172,13 @@
         </ul>
       </div>
     </div>
-  </div>
-</template>
-
-<script>
-import StudentLoanRefinance from "~/src/templates/student-loan-refinance/student-loan-refinance.vue";
-
-export default {
-  components: {
-    StudentLoanRefinance,
-  },
-};
-</script>
-
-<style>
-/*  */
-</style>
+  </template>
+  
+  <script setup lang="ts">
+ import RefinanceCalculator from '~/src/templates/refinance-calculator.vue';
+  
+  </script>
+  
+  <style>
+  /*  */
+  </style>

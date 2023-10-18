@@ -11,6 +11,15 @@ export const calculatorsList = ref([
     to: "/loan-payment-page",
   },
   {
+    id: 6,
+    name: "Refinance Calculator",
+    imageUrl:
+      "https://static.bankbazaar.com/images/calc/icon-hra-calculator.webp",
+    description: "Refinance your loans with ease.",
+    buttonText: "Refinance Calculator",
+    to: "/refinance-calculator-page",
+  },
+  {
     id: 2,
     name: "Student Loan Refinance Calculator",
     imageUrl:
@@ -25,7 +34,7 @@ export const calculatorsList = ref([
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-pl-emi-calculator.webp",
     description: "Calculate auto loan payments with ease.",
-    buttonText: "Auto Loan Calculator",
+    buttonText: "Auto Loan Lite Calculator",
     to: "/auto-loan-lite-page",
   },
   {
@@ -47,14 +56,15 @@ export const calculatorsList = ref([
     to: "/mortgage-payment-page",
   },
   {
-    id: 6,
-    name: "Refinance Calculator",
+    id: 12,
+    name: "Auto Refinance Calculator",
     imageUrl:
-      "https://static.bankbazaar.com/images/calc/icon-hra-calculator.webp",
-    description: "Refinance your loans with ease.",
-    buttonText: "Refinance Calculator",
-    to: "/apps/refinance.html",
+      "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
+    description: "Refinance your auto loan with ease..",
+    buttonText: "Auto Refinance Calculator",
+    to: "/auto-refinance-page",
   },
+
   {
     id: 7,
     name: "Student Loan Payoff Calculator",
@@ -102,11 +112,12 @@ export const calculatorsList = ref([
   },
   {
     id: 12,
-    name: "Auto Affordability Lite Calculator",
+    name: "Auto Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
-    description: "Quickly assess auto loan affordability.",
-    buttonText: "Auto Affordability Lite Calculator",
-    to: "/apps/auto-affordability.html",
-  },
+    description: "Refinance your auto loan with ease..",
+    buttonText: "Auto Refinance Calculator",
+    to: "/auto-refinance-page",
+  }
+  
 ]);

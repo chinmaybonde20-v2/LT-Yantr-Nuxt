@@ -29,5 +29,6 @@ export default {
 input{
   padding: 10px;
   width: 360px;
+  margin: 5px;
 }
 </style>

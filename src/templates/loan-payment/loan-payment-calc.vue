@@ -12,6 +12,7 @@
                 :value="amount"
                 @input-change="updateValue"
               />
+             
             </div>
             <div class="input-group">
               <NumberInput

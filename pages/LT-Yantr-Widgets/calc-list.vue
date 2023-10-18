@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h2 class="primary-txt">LendingTree Yantr Widgets</h2>
-    <hr />
+  <div class="container">
+    <h1 class="primary-txt">LendingTree Yantr Widgets</h1>
     <div class="cards-body">
       <div
         class="card"
@@ -46,9 +45,9 @@ import { calculatorsList } from "./calculators-list";
 }
 
 .primary-txt {
-  font-size: 25px;
-  font-weight: 900;
-  font-family: "Lato", "Arial", Helvetica, sans-serif;
+  font-size: 32px;
+  /* font-weight: 900; */
+  font-family: Lato,Helvetica,Arial,sans-serif;
   color: #333;
   text-align: center;
 }
@@ -73,7 +72,7 @@ import { calculatorsList } from "./calculators-list";
 
 .btn {
   padding: 10px;
-  background-color: #3492b4;
+  background-color: #1abc9c;;
   color: white;
   text-align: center;
   border: none;
@@ -85,6 +84,8 @@ import { calculatorsList } from "./calculators-list";
 }
 
 .btn:hover {
-  background-color: #2a677e;
+  background-color: #189e83;
 }
+
+
 </style>
