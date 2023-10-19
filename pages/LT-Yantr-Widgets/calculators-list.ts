@@ -11,7 +11,7 @@ export const calculatorsList = ref([
     to: "/loan-payment-page",
   },
   {
-    id: 6,
+    id: 2,
     name: "Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-hra-calculator.webp",
@@ -20,7 +20,7 @@ export const calculatorsList = ref([
     to: "/refinance-calculator-page",
   },
   {
-    id: 2,
+    id: 3,
     name: "Student Loan Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
@@ -29,7 +29,7 @@ export const calculatorsList = ref([
     to: "/student-loan-refinance-page",
   },
   {
-    id: 3,
+    id: 4,
     name: "Auto Loan Lite Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-pl-emi-calculator.webp",
@@ -38,7 +38,7 @@ export const calculatorsList = ref([
     to: "/auto-loan-lite-page",
   },
   {
-    id: 4,
+    id: 5,
     name: "Debt Consolidation Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png",
@@ -47,7 +47,7 @@ export const calculatorsList = ref([
     to: "/debt-consodilation-page",
   },
   {
-    id: 5,
+    id: 6,
     name: "Mortgage Payment Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-credit-card-emi-calc.png",
@@ -56,7 +56,7 @@ export const calculatorsList = ref([
     to: "/mortgage-payment-page",
   },
   {
-    id: 12,
+    id: 7,
     name: "Auto Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
@@ -64,7 +64,16 @@ export const calculatorsList = ref([
     buttonText: "Auto Refinance Calculator",
     to: "/auto-refinance-page",
   },
+  {
+    id: 8, 
+    name: "Inflation Calculator",
+    imageUrl: "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png", 
+    description: "Calculate the impact of inflation on your currency.",
+    buttonText: "Inflation Calculator",
+    to: "/inflamation-calculator-page",
+  },
 
+  // Undone
   {
     id: 7,
     name: "Student Loan Payoff Calculator",
