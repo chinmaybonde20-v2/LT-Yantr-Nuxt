@@ -13,6 +13,7 @@
               type="number"
               :value="currentBalance"
               @input-change="updateValue"
+              :showToolTip="showToolTip"
             />
             
           </div>
@@ -57,6 +58,7 @@
               :options="dropdownOptions"
               :selectedOption="tenure"
               @tenure-change="updateTenure"
+              :showToolTip="showToolTip"
             />
           </div>
           <div>
@@ -76,9 +78,11 @@
       <br />
       <h2>Refinancing results</h2>
       <h3>Your estimated savings over the life of the loan</h3>
-      <h1>{{ estimatedSavings.toFixed(2) }}</h1>
+      <h1>${{ estimatedSavings.toFixed(2) }}</h1>
 
-      <button class="get-offer-button">See Refinance Offers</button>
+
+
+      <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/?sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">See Refinance Offers</button>
       <br /><br />
     </div>
     <div class="row card-div">
@@ -148,7 +152,7 @@ const dropdownOptions = ref([
   { value: 3, label: "3 Years" },
   { value: 2, label: "2 Years" },
 ]);
-
+const showToolTip = ref(true);
 // Define a computed property for the remaining months (N) based on the selected tenure
 const remainingMonths = computed(() => tenure.value * 12);
 

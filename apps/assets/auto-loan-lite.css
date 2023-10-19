@@ -100,3 +100,8 @@ h3{
 .disc {
     text-align: center;
 }
+.dis-btn {
+    border: none;
+    background-color: white;
+    cursor: pointer; 
+}

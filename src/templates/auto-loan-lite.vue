@@ -65,8 +65,9 @@
             </div>
             <div class="disc">
               <h3>We've found offers for this result:</h3>
-              <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/auto/egret/a2_purch_insuranceoptin_nossn?icode=45710&SpId=wp-auto&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Get Free Loan Offer</button>
-              <p>Disclosures</p>
+              <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/auto/egret/a2_purch_insuranceoptin_nossn?icode=45710&SpId=wp-auto&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Compare Loan Offer</button>
+            <br><br>
+             <button class="dis-btn">Disclosures</button>
             </div>
           </div>
         </div>

@@ -43,6 +43,7 @@
                 :options="dropdownOptions"
                 :selectedOption="tenure"
                 @tenure-change="updateTenure"
+                :showToolTip="showToolTip"
               />
             </div>
             <!-- Input 4 -->
@@ -53,6 +54,7 @@
                 type="number"
                 :value="refinanceInterestRate"
                 @input-change="updateValue"
+                :showToolTip="showToolTip"
               />
             </div>
           </div>
@@ -68,7 +70,10 @@
             </div>
 
             <h3>Lifetime Savings: {{ lifetimeSavings }}</h3>
-            <button class="get-offer-button">View Free Loan Offers</button>
+            
+            <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/student/refinance/'">View Free Loan Offers</button>
+
+
           </div>
           <hr />
           <!-- Table -->
@@ -140,6 +145,7 @@ export default {
         { value: 5, label: "5 Years" },
         { value: 10, label: "10 Years" },
       ],
+      showToolTip : true
     };
   },
   methods: {

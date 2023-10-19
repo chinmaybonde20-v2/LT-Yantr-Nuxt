@@ -1,7 +1,8 @@
 <template>
   <div>
-    <label :for="name">{{ label }}</label> <tooltip v-if="showToolTip" /><br />
-    <input :type="type" :id="name" :value="value" @input="updateValue" />
+    <label :for="name">{{ label }}</label>
+    <tooltip v-if="showToolTip" /><br />
+    <input :type="type" :id="name" v-model="inputValue" @input="emitUpdateValue" />
   </div>
 </template>
 
@@ -12,22 +13,28 @@ export default {
     tooltip,
   },
   props: {
-    name: String, 
+    name: String,
     label: String,
     type: String,
-    value: String, 
-    showToolTip: Boolean
+    value: String,
+    showToolTip: Boolean,
+  },
+  data() {
+    return {
+      inputValue: this.value, // Initialize inputValue with the prop value
+    };
   },
   methods: {
-    updateValue(event) {
-      this.$emit("input-change", this.name, event.target.value);
+    emitUpdateValue() {
+      this.$emit("input", this.inputValue); // Emit the input event with the new value
+      this.$emit("input-change", this.name, this.inputValue); // Emit your custom input-change event
     },
   },
 };
 </script>
 
 <style>
-input{
+input {
   padding: 10px;
   width: 360px;
   margin: 5px;

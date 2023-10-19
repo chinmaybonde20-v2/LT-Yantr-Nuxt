@@ -44,8 +44,17 @@ export const calculatorsList = ref([
       "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png",
     description: "Simplify your finances with debt consolidation.",
     buttonText: "Debt Consolidation Calculator",
-    to: "/debt-consodilation-page",
-  },
+    to: "/debt-consodilation-page",},
+    {
+      id: 9,
+      name: "Home Equity Loan Calculator",
+      imageUrl:
+        "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png",
+      description: "Calculate equity loan terms for your home.",
+      buttonText: "Home Equity Loan Calculator",
+      to: "/home-equity-loan-page",
+    },
+  
   {
     id: 6,
     name: "Mortgage Payment Calculator",
@@ -74,6 +83,7 @@ export const calculatorsList = ref([
   },
 
   // Undone
+ 
   {
     id: 7,
     name: "Student Loan Payoff Calculator",

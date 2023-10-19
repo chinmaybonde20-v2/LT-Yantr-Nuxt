@@ -32,6 +32,7 @@
                 type="number"
                 :value="consoLoanRate"
                 @input-change="updateValue"
+                :showToolTip="showToolTip"
               />
             </div>
             <!-- Dropdown 4 -->
@@ -41,6 +42,7 @@
                 :options="dropdownOptions"
                 :selectedOption="tenure"
                 @tenure-change="updateTenure"
+                :showToolTip="showToolTip"
               />
             </div>
           </div>
@@ -62,7 +64,8 @@
             <p class="left-text">Your Monthly Savings Would Be:</p>
             <h2 class="right-text txt-color-sav">${{ monthlySaving }}</h2>
           </div>
-          <button class="get-offer-button">Find Your Best Terms</button>
+
+          <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/personal/kumquat/pl_29?icode=48950&ltpopupvariation=ltredesign&SpId=wp-personal&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Find Your Best Terms</button>
         </div>
       </template>
     </DefaultLayout>
@@ -99,6 +102,7 @@ export default {
         { value: 9, label: "9 Years" },
         { value: 10, label: "10 Years" },
       ],
+      showToolTip : true
     };
   },
   methods: {

@@ -14,13 +14,13 @@
             :value="dollarAmount"
             @input-change="updateValue"
           />
-
+<br><br>
           <Dropdown
             label="Starting Year"
             :options="startYearOptions"
             :selectedOption="tenure"
             @tenure-change="updateTenure"
-          />
+          /><br><br>
           <Dropdown
             label="Ending Year"
             :options="endYearOptions"

@@ -32,16 +32,20 @@
                 type="number"
                 :value="newIntRate"
                 @input-change="updateValue"
+                :showToolTip="showToolTip"
               />
             </div>
             <!-- Dropdown 4 -->
             <div class="input-group">
               <Dropdown
-                label="New Loan Term:" 
-                :options="dropdownOptions"
-                :selectedOption="tenure"
-                @tenure-change="updateTenure"
-              />
+  label="New Loan Term:"
+  :options="dropdownOptions"
+  :selectedOption="tenure"
+  @tenure-change="updateTenure"
+  @input-change="updateValue('tenure', $event)"
+  :showToolTip="showToolTip"
+/>
+
             </div>
           </div>
         </div>
@@ -60,10 +64,10 @@
           </div>
           <hr />
           <div class="flex-container">
-            <p class="left-text">Refinancing Decreases your monthly payment by</p>
+            <p class="left-text">Refinancing {{ monthlySaving >= 0 ? 'Decreases' : 'Increases' }} your monthly payment by</p>
             <h2 class="right-text txt-color-sav">${{ monthlySaving }}</h2>
           </div>
-          <button class="get-offer-button">Find Your Best Terms</button>
+          <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/mortgage/pecan/refi_sldr_pg?loan-type=refinance&rcode=10000&abandon=false&icode=28550&SpId=wp-refinance&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Compare Refinance Offers</button>
         </div>
       </template>
     </DefaultLayout>
@@ -85,6 +89,7 @@ const dropdownOptions = ref([
   { value: 15, label: "15 Years" },
   { value: 30, label: "30 Years" },
 ]);
+const showToolTip = ref(true);
 
 const updateValue = (name, value) => {
   if (name === 'currMortBalance') {

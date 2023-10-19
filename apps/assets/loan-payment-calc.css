@@ -34,7 +34,12 @@
 .in-grp {
     padding: 20px;
 }
-
+.in-grp a {
+   font-size: 20px;
+   text-decoration: none;
+   color: #00aeef;
+margin-left: 50px;
+}
 label {
     display: block;
     margin-bottom: 5px;
@@ -49,6 +54,10 @@ select {
 
 .right-column {
     text-align: center;
+}
+.right-column p{
+    font-size: 30px;
+    width: 100%;
 }
 
 .amount {
