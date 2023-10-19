@@ -70,66 +70,60 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import DefaultLayout from '../shared/layout/DefaultLayout.vue';
 import NumberInput from '../shared/components/NumberInput.vue';
 import Dropdown from "../shared/components/Dropdown.vue";
 
-export default {
-  components: {
-    NumberInput,
-    Dropdown,
-    DefaultLayout,
-  },
-  data() {
-    return {
-      currMortBalance: 250000,
-      monthlyPayments: 1950,
-      newIntRate: 6.00,
-      tenure: 30,
-      newMonthlyPayment: "",
-      monthlySaving: "",
-      dropdownOptions: [
-        { value: 15, label: "15 Years" },
-        { value: 30, label: "30 Years" },
-      ],
-    };
-  },
-  methods: {
-    updateValue(name, value) {
-      this[name] = value;
-      this.calculateMonthlyPayment();
-    },
-    updateTenure(tenure) {
-      this.tenure = tenure;
-      this.calculateMonthlyPayment();
-    },
-    calculateMonthlyPayment() {
-      // Your improved calculation logic here
-      const currMortBalance = this.currMortBalance;
-      const monthlyPayments = this.monthlyPayments;
-      const newIntRate = this.newIntRate / 100;
-      const tenureInMonths = this.tenure * 12;
+const currMortBalance = ref(250000);
+const monthlyPayments = ref(1950);
+const newIntRate = ref(6.00);
+const tenure = ref(30);
+const newMonthlyPayment = ref("");
+const monthlySaving = ref("");
+const dropdownOptions = ref([
+  { value: 15, label: "15 Years" },
+  { value: 30, label: "30 Years" },
+]);
 
-      // Perform the calculation to get the new monthly payment
-      const newMonthlyPayment =
-        (currMortBalance * (newIntRate / 12)) /
-        (1 - Math.pow(1 + newIntRate / 12, -tenureInMonths));
-
-      // Calculate the monthly savings
-      const monthlySaving = monthlyPayments - newMonthlyPayment;
-
-      // Update the data properties
-      this.newMonthlyPayment = newMonthlyPayment.toFixed(2);
-      this.monthlySaving = monthlySaving.toFixed(2);
-    },
-  },
-  created() {
-    this.calculateMonthlyPayment();
-  },
+const updateValue = (name, value) => {
+  if (name === 'currMortBalance') {
+    currMortBalance.value = value;
+  } else if (name === 'monthlyPayments') {
+    monthlyPayments.value = value;
+  } else if (name === 'newIntRate') {
+    newIntRate.value = value;
+  }
+  calculateMonthlyPayment();
 };
+
+const updateTenure = (newTenure) => {
+  tenure.value = newTenure;
+  calculateMonthlyPayment();
+};
+
+const calculateMonthlyPayment = () => {
+  const currBalance = currMortBalance.value;
+  const monthlyPaymentValue = monthlyPayments.value;
+  const interestRate = newIntRate.value / 100;
+  const tenureInMonths = tenure.value * 12;
+
+  // Perform the calculation to get the new monthly payment
+  const newPayment = (currBalance * (interestRate / 12)) /
+    (1 - Math.pow(1 + interestRate / 12, -tenureInMonths));
+
+  // Calculate the monthly savings
+  const savings = monthlyPaymentValue - newPayment;
+
+  newMonthlyPayment.value = newPayment.toFixed(2);
+  monthlySaving.value = savings.toFixed(2);
+};
+
+watch([currMortBalance, monthlyPayments, newIntRate, tenure], calculateMonthlyPayment);
+
+onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>
-@import "./debt-consodilation.css";
+@import "../../apps/assets/debt-consodilation.css";
 </style>

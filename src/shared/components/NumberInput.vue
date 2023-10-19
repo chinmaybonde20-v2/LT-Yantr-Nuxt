@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="name">{{ label }}</label> <br />
+    <label :for="name">{{ label }}</label> <tooltip v-if="showToolTip" /><br />
     <input :type="type" :id="name" :value="value" @input="updateValue" />
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
     label: String,
     type: String,
     value: String, 
+    showToolTip: Boolean
   },
   methods: {
     updateValue(event) {

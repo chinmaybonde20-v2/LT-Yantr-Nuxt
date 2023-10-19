@@ -179,8 +179,7 @@
 </template>
 
 <script>
-import DebtConsodilation from "~/src/templates/debt-consodilation/debt-consodilation.vue";
-
+import DebtConsodilation from "~/src/templates/debt-consodilation.vue";
 export default {
   components: {
     DebtConsodilation,

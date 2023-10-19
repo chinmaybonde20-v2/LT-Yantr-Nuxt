@@ -69,9 +69,9 @@
   </div>
 </template>
 <script>
-import NumberInput from "../../shared/components/NumberInput.vue";
-import Dropdown from "../../shared/components/Dropdown.vue";
-import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
+import NumberInput from "../shared/components/NumberInput.vue";
+import Dropdown from "../shared/components/Dropdown.vue";
+import DefaultLayout from "../shared/layout/DefaultLayout.vue";
 
 export default {
   components: {
@@ -138,5 +138,6 @@ export default {
 
 
 <style scoped>
-@import "./debt-consodilation.css";
+@import "../../apps/assets/debt-consodilation.css";
+
 </style>

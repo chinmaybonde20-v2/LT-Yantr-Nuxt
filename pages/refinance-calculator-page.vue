@@ -175,8 +175,7 @@
   </template>
   
   <script setup lang="ts">
- import RefinanceCalculator from '~/src/templates/refinance-calculator.vue';
-  
+import RefinanceCalculator from '~/src/templates/refinance-calculator.vue';  
   </script>
   
   <style>

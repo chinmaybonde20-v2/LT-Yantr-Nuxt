@@ -179,7 +179,7 @@
 </template>
 
 <script>
-import StudentLoanRefinance from "~/src/templates/student-loan-refinance/student-loan-refinance.vue";
+import StudentLoanRefinance from "~/src/templates/student-loan-refinance.vue";
 
 export default {
   components: {

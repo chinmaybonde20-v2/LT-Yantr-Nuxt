@@ -94,9 +94,9 @@
   </div>
 </template>
 <script>
-import NumberInput from "../../shared/components/NumberInput.vue";
-import Dropdown from "../../shared/components/Dropdown.vue";
-import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
+import NumberInput from "../shared/components/NumberInput.vue";
+import Dropdown from "../shared/components/Dropdown.vue";
+import DefaultLayout from "../shared/layout/DefaultLayout.vue";
 
 export default {
   components: {
@@ -174,5 +174,5 @@ export default {
 </script>
 
 <style scoped>
-@import "./mortgage-payment-calculator.css";
+@import "../../apps/assets/mortgage-payment-calculator.css";
 </style>

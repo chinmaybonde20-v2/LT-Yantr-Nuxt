@@ -180,7 +180,7 @@
 </template>
 
 <script>
-import MortgagePaymentCalculator from "~/src/templates/mortgage-payment/mortgage-payment-calculator.vue";
+import MortgagePaymentCalculator from "~/src/templates/mortgage-payment-calculator.vue";
 
 export default {
   components: {

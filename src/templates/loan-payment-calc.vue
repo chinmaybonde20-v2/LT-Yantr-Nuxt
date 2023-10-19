@@ -11,6 +11,7 @@
                 type="number"
                 :value="amount"
                 @input-change="updateValue"
+                :showToolTip="showToolTip"
               />
              
             </div>
@@ -21,6 +22,7 @@
                 type="number"
                 :value="interest"
                 @input-change="updateValue"
+                :showToolTip="showToolTip"
               />
             </div>
             <div class="input-group">
@@ -29,6 +31,7 @@
                 :options="dropdownOptions"
                 :selectedOption="tenure"
                 @tenure-change="updateTenure"
+                :showToolTip="showToolTip"
               />
             </div>
           </div>
@@ -38,11 +41,14 @@
       <template v-slot:rightColumn>
         <div class="right-column">
           <div class="amount">
-            <h1>{{ monthlyPayment }}</h1>
+            <p>Your monthly payment will be:</p>
+            <h1>${{ monthlyPayment }}</h1>
+            <p>Ready for the next step?</p>
           </div>
 
-          <h3>Ready for the next step?</h3>
-          <button class="get-offer-button">Get Free Loan Offer</button>
+          <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/mortgage/pecan/refi_sldr_pg_msg?rcode=10000&abandon=false&icode=47770&SpId=ns-calc-loan-payment&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Get Free Loan Offer</button>
+
+
         </div>
       </template>
     </DefaultLayout>
@@ -52,10 +58,10 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
-import NumberInput from "../../shared/components/NumberInput.vue";
-import Dropdown from "../../shared/components/Dropdown.vue";
-import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
-import payment from "../../shared/helpers/payment.js";
+import NumberInput from "../shared/components/NumberInput.vue";
+import Dropdown from "../shared/components/Dropdown.vue";
+import DefaultLayout from "../shared/layout/DefaultLayout.vue";
+import payment from "../shared/helpers/payment.js";
 
 const amount = ref(50000);
 const interest = ref(0.001);
@@ -74,7 +80,7 @@ const dropdownOptions = ref([
   { value: 30, label: "30 Years" },
   { value: 40, label: "40 Years" },
 ]);
-
+const showToolTip = ref(true);
 const updateValue = (name, value) => {
   if (name === "amount") {
     amount.value = value;
@@ -102,5 +108,5 @@ onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>
-@import "./loan-payment-calc.css";
+@import "../../apps/assets/loan-payment-calc.css";
 </style>

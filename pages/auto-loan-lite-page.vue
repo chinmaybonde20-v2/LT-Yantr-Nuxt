@@ -176,8 +176,7 @@
   </template>
   
   <script>
-  import AutoLoanLite from '~/src/templates/auto-loan-lite/auto-loan-lite.vue';
-  
+  import AutoLoanLite from '~/src/templates/auto-loan-lite.vue';
   
   export default {
     components: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="tenure">{{ label }}</label><span><tooltip /></span><br />
+    <label for="tenure">{{ label }}</label><span><tooltip v-if="showToolTip"/></span><br />
     <select id="tenure" @change="updateTenure" class="option">
       <option v-for="option in options" :value="option.value" >{{ option.label }}</option>
     </select>
@@ -21,6 +21,7 @@ export default {
       required: true,
     },
     selectedOption: Number,
+    showToolTip: Boolean
   },
   methods: {
     updateTenure(event) {

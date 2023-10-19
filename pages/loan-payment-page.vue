@@ -178,7 +178,7 @@
 </template>
 
 <script>
-import LoanPaymentCalc from "~/src/templates/loan-payment/loan-payment-calc.vue";
+import LoanPaymentCalc from "~/src/templates/loan-payment-calc.vue";
 
 export default {
   components: {

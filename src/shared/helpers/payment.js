@@ -38,7 +38,7 @@ export default {
 
       const monthlyPayment = (numerator / denominator).toFixed(2);
 
-      return `Monthly Payment: $${monthlyPayment}`;
+      return monthlyPayment;
     }
   },
 };

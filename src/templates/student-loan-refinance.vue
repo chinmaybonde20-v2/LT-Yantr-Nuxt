@@ -110,9 +110,9 @@
   </div>
 </template>
 <script>
-import NumberInput from "../../shared/components/NumberInput.vue";
-import Dropdown from "../../shared/components/Dropdown.vue";
-import DefaultLayout from "../../shared/layout/DefaultLayout.vue";
+import NumberInput from "../shared/components/NumberInput.vue";
+import Dropdown from "../shared/components/Dropdown.vue";
+import DefaultLayout from "../shared/layout/DefaultLayout.vue";
 
 export default {
   components: {
@@ -195,5 +195,5 @@ export default {
 </script>
 
 <style scoped>
-@import "./student-loan-refinance.css";
+@import "../../apps/assets/student-loan-refinance.css";
 </style>
