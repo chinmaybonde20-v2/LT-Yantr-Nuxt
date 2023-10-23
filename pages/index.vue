@@ -1,11 +1,13 @@
 <template>
   <div>
-    <calc-list />
+   <AppNavbar />
+    <CalcList />
   </div>
 </template>
   
 <script setup>
-import calcList from "./LT-Yantr-Widgets/calc-list.vue";
+import CalcList from "./LT-Yantr-Widgets/calc-list.vue";
+import AppNavbar from "./app-navbar.vue";
 </script>
   
 <style>

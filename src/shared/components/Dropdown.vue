@@ -1,8 +1,11 @@
 <template>
   <div>
-    <label for="tenure">{{ label }}</label><span><tooltip v-if="showToolTip"/></span><br />
+    <label for="tenure">{{ label }}</label
+    ><span><tooltip v-if="showToolTip" /></span><br />
     <select id="tenure" @change="updateTenure" class="option">
-      <option v-for="option in options" :value="option.value" >{{ option.label }}</option>
+      <option v-for="option in options" :value="option.value" class="option">
+        {{ option.label }}
+      </option>
     </select>
   </div>
 </template>
@@ -21,18 +24,17 @@ export default {
       required: true,
     },
     selectedOption: Number,
-    showToolTip: Boolean
+    showToolTip: Boolean,
   },
   methods: {
     updateTenure(event) {
-      this.$emit('tenure-change', parseInt(event.target.value));
+      this.$emit("tenure-change", parseInt(event.target.value));
     },
   },
 };
 </script>
-<style>
-.option{
-  padding: 10px;
-  width: 385px;
-}
+
+
+<style scoped>
+@import "../../../apps/assets/style.css";
 </style>

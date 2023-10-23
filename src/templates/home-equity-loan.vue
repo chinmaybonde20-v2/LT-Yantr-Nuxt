@@ -2,9 +2,8 @@
   <div>
     <DefaultLayout>
       <template v-slot:leftColumn>
-        <div class="inputs">
-          <div class="in-grp">
-            <div class="input-group">
+        <div class="input-box">
+            <div class="input">
               <NumberInput
                 name="currAprValue"
                 label="Current Appraised Value of Home:"
@@ -14,7 +13,7 @@
                 :showToolTip="showToolTip"
               />
             </div>
-            <div class="input-group">
+            <div class="input">
               <NumberInput
                 name="oweAmount"
                 label="How Much Do You Owe on Home:"
@@ -24,7 +23,7 @@
                 :showToolTip="showToolTip"
               />
             </div>
-            <div class="input-group">
+            <div class="input">
               <Dropdown
                 label="Current Credit Score:"
                 :options="creditScoreOptions"
@@ -32,18 +31,16 @@
                 @change="updateTenure"
                 :showToolTip="showToolTip"
               />
-            </div>
-            <a href="https://www.lendingtree.com/home/home-value">Estimate your home's current value</a>
+            </div><br>
+           <p id="p1" > <a href="https://www.v2solutions.com/#" class="home-eq">Estimate your home's current value</a></p>
           </div>
-        </div>
+      
       </template>
 
       <template v-slot:rightColumn>
-        <div class="right-column">
-          <p>You can get a home equity loan or HELOC for:</p>
-          <div class="amount">
-            <h1>${{ homeEquityLoan }}</h1>
-          </div>
+        <div class="output">
+          <p id="p1">You can get a home equity loan or HELOC for:</p>
+          <h1>${{ homeEquityLoan }}</h1>
 
           <button class="get-offer-button" @click="redirectToOffer">
             Access Your Equity
@@ -91,7 +88,7 @@ const calculateHomeEquityLoan = () => {
 };
 
 const redirectToOffer = () => {
-  window.location.href = "https://www.lendingtree.com/?sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1";
+  window.location.href = "https://www.v2solutions.com/#";
 };
 
 watch([currAprValue, oweAmount, tenure], calculateHomeEquityLoan);
@@ -100,5 +97,5 @@ onMounted(calculateHomeEquityLoan);
 </script>
 
 <style scoped>
-@import "../../apps/assets/loan-payment-calc.css";
+@import "../../apps/assets/style.css";
 </style>

@@ -46,7 +46,7 @@ export const calculatorsList = ref([
     buttonText: "Debt Consolidation Calculator",
     to: "/debt-consodilation-page",},
     {
-      id: 9,
+      id: 6,
       name: "Home Equity Loan Calculator",
       imageUrl:
         "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png",
@@ -54,38 +54,38 @@ export const calculatorsList = ref([
       buttonText: "Home Equity Loan Calculator",
       to: "/home-equity-loan-page",
     },
+    {
+      id: 7,
+      name: "Debt Repayment Calculator",
+      imageUrl:
+        "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
+      description: "Manage and repay your debts efficiently.",
+      buttonText: "Debt Repayment Calculator",
+      to: "/debt-repayment-page",
+    },
+    {
+      id: 8,
+      name: "Auto Refinance Calculator",
+      imageUrl:
+        "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
+      description: "Refinance your auto loan with ease..",
+      buttonText: "Auto Refinance Calculator",
+      to: "/auto-refinance-page",
+    },
   
   {
-    id: 6,
-    name: "Mortgage Payment Calculator",
-    imageUrl:
-      "https://static.bankbazaar.com/images/calc/icon-credit-card-emi-calc.png",
-    description: "Estimate monthly mortgage payments accurately.",
-    buttonText: "Mortgage Payment Calculator",
-    to: "/mortgage-payment-page",
-  },
-  {
-    id: 7,
-    name: "Auto Refinance Calculator",
-    imageUrl:
-      "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
-    description: "Refinance your auto loan with ease..",
-    buttonText: "Auto Refinance Calculator",
-    to: "/auto-refinance-page",
-  },
-  {
-    id: 8, 
+    id: 9, 
     name: "Inflation Calculator",
     imageUrl: "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png", 
     description: "Calculate the impact of inflation on your currency.",
     buttonText: "Inflation Calculator",
     to: "/inflamation-calculator-page",
   },
-
+  
   // Undone
  
   {
-    id: 7,
+    id: 21,
     name: "Student Loan Payoff Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-hl-emi-calculator.webp",
@@ -93,17 +93,9 @@ export const calculatorsList = ref([
     buttonText: "Student Loan Payoff Calculator",
     to: "/apps/student-loan-payoff.html",
   },
+ 
   {
-    id: 8,
-    name: "Debt Repayment Calculator",
-    imageUrl:
-      "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",
-    description: "Manage and repay your debts efficiently.",
-    buttonText: "Debt Repayment Calculator",
-    to: "/apps/debt-repayment.html",
-  },
-  {
-    id: 9,
+    id: 22,
     name: "Home Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-pl-emi-calculator.webp",
@@ -112,7 +104,7 @@ export const calculatorsList = ref([
     to: "/apps/home-refinance.html",
   },
   {
-    id: 10,
+    id: 23,
     name: "Rent vs Buy Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-home-loan-elibility-calc.png",
@@ -121,7 +113,7 @@ export const calculatorsList = ref([
     to: "/apps/rent-vs-buy.html",
   },
   {
-    id: 11,
+    id: 24,
     name: "Auto Affordability Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-credit-card-emi-calc.png",
@@ -130,7 +122,7 @@ export const calculatorsList = ref([
     to: "/apps/auto-affordability.html",
   },
   {
-    id: 12,
+    id: 25,
     name: "Auto Refinance Calculator",
     imageUrl:
       "https://static.bankbazaar.com/images/calc/icon-emi-calculator.webp",

@@ -2,70 +2,84 @@
   <div>
     <DefaultLayout>
       <template v-slot:leftColumn>
-        <div class="inputs">
-          <div class="in-grp">
-            <!-- Input 1 -->
-            <div class="input-group">
-              <NumberInput
-                name="loanBalance"
-                label="Loan Balance:"
-                type="number"
-                :value="loanBalance"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 2 -->
-            <div class="input-group">
-              <NumberInput
-                name="monthlyPayments"
-                label="Monthly Payment:"
-                type="number"
-                :value="monthlyPayments"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 3 -->
-            <div class="input-group">
-              <NumberInput
-                name="consoLoanRate"
-                label="Consolidation Loan Rate: "
-                type="number"
-                :value="consoLoanRate"
-                @input-change="updateValue"
-                :showToolTip="showToolTip"
-              />
-            </div>
-            <!-- Dropdown 4 -->
-            <div class="input-group">
-              <Dropdown
-                label="Loan Term"
-                :options="dropdownOptions"
-                :selectedOption="tenure"
-                @tenure-change="updateTenure"
-                :showToolTip="showToolTip"
-              />
-            </div>
+        <div class="input-box">
+          <!-- Input 1 -->
+          <div class="input">
+            <NumberInput
+              name="loanBalance"
+              label="Loan Balance:"
+              type="number"
+              :value="loanBalance"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 2 -->
+          <div class="input">
+            <NumberInput
+              name="monthlyPayments"
+              label="Monthly Payment:"
+              type="number"
+              :value="monthlyPayments"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 3 -->
+          <div class="input">
+            <NumberInput
+              name="consoLoanRate"
+              label="Consolidation Loan Rate: "
+              type="number"
+              :value="consoLoanRate"
+              @input-change="updateValue"
+              :showToolTip="showToolTip"
+            />
+          </div>
+          <!-- Dropdown 4 -->
+          <div class="input">
+            <Dropdown
+              label="Loan Term"
+              :options="dropdownOptions"
+              :selectedOption="tenure"
+              @tenure-change="updateTenure"
+              :showToolTip="showToolTip"
+            />
           </div>
         </div>
       </template>
 
       <template v-slot:rightColumn>
-        <div>
-          <div class="flex-container">
-            <p class="left-text">Consolidation loan amount:</p>
-            <h2 class="right-text">${{ loanBalance }}</h2>
-          </div>
-          <div class="flex-container">
-            <p class="left-text">New Monthly Payment:</p>
-            <h3 class="right-text txt-color">${{ newMonthlyPayment }}</h3>
-          </div>
-          <hr />
-          <div class="flex-container">
-            <p class="left-text">Your Monthly Savings Would Be:</p>
-            <h2 class="right-text txt-color-sav">${{ monthlySaving }}</h2>
-          </div>
-
-          <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/personal/kumquat/pl_29?icode=48950&ltpopupvariation=ltredesign&SpId=wp-personal&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Find Your Best Terms</button>
+        <div class="output">
+          <table class="custom-table">
+            <tr>
+              <td>
+                <p class="table-flex">Consolidation loan amount:</p>
+              </td>
+              <td>
+                <p id="p3">${{ loanBalance }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="table-flex">New Monthly Payment:</p>
+              </td>
+              <td>
+                <p id="p3">${{ newMonthlyPayment }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="table-flex">
+                  Your Monthly Savings Would Be:&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+              </td>
+              <td>
+                <p id="p3">${{ monthlySaving }}</p>
+              </td>
+            </tr>
+          </table>
+          <button class="get-offer-button" @click="redirectToLink">
+            Find Your Best Terms
+          </button>
         </div>
       </template>
     </DefaultLayout>
@@ -102,7 +116,7 @@ export default {
         { value: 9, label: "9 Years" },
         { value: 10, label: "10 Years" },
       ],
-      showToolTip : true
+      showToolTip: true,
     };
   },
   methods: {
@@ -115,23 +129,22 @@ export default {
       this.calculateMonthlyPayment();
     },
     calculateMonthlyPayment() {
-     
       const loanBalance = this.loanBalance;
       const monthlyPayments = this.monthlyPayments;
-      const consoLoanRate = this.consoLoanRate / 100; 
+      const consoLoanRate = this.consoLoanRate / 100;
       const tenureInMonths = this.tenure * 12;
 
-    
       const newMonthlyPayment =
         (loanBalance * (consoLoanRate / 12)) /
         (1 - Math.pow(1 + consoLoanRate / 12, -tenureInMonths));
 
- 
       const monthlySaving = monthlyPayments - newMonthlyPayment;
 
-     
       this.newMonthlyPayment = newMonthlyPayment.toFixed(2);
       this.monthlySaving = monthlySaving.toFixed(2);
+    },
+    redirectToLink() {
+      window.location.href = "https://www.v2solutions.com/#";
     },
   },
   created() {
@@ -143,5 +156,5 @@ export default {
 
 <style scoped>
 @import "../../apps/assets/debt-consodilation.css";
-
+@import "../../apps/assets/style.css";
 </style>

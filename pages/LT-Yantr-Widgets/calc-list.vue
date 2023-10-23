@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="primary-txt">LendingTree Yantr Widgets</h1>
+  <div>
+    <h1 class="primary-txt">V2 Calculators Widgets</h1>
     <div class="cards-body">
       <div
         class="card"
@@ -25,5 +25,5 @@ import { calculatorsList } from "./calculators-list";
 </script>
 
 <style scoped>
-@import "../../apps/assets/calc-list.css";
+@import "../../apps/assets/style.css";
 </style>

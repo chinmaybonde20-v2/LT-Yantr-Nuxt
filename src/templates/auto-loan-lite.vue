@@ -2,61 +2,57 @@
   <div>
     <DefaultLayout>
       <template v-slot:leftColumn>
-        <div class="inputs">
-          <div class="in-grp">
-            <!-- Input 1 -->
-            <div class="input-group">
-              <NumberInput
-                name="totalLoanAmount"
-                label="Total Loan Amount"
-                type="number"
-                :value="totalLoanAmount"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 2 d-->
-            <div class="input-group">
-              <NumberInput
-                name="termInMonths"
-                label="Term (Months):"
-                type="number"
-                :value="termInMonths"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 3 -->
-            <div class="input-group">
-              <NumberInput
-                name="interestRate"
-                label="Interest Rate (%):"
-                type="number"
-                :value="interestRate"
-                @input-change="updateValue"
-              />
-            </div>
+        <div class="input-box">
+          <!-- Input 1 -->
+          <div class="input">
+            <NumberInput
+              name="totalLoanAmount"
+              label="Total Loan Amount"
+              type="number"
+              :value="totalLoanAmount"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 2 d-->
+          <div class="input">
+            <NumberInput
+              name="termInMonths"
+              label="Term (Months):"
+              type="number"
+              :value="termInMonths"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 3 -->
+          <div class="input">
+            <NumberInput
+              name="interestRate"
+              label="Interest Rate (%):"
+              type="number"
+              :value="interestRate"
+              @input-change="updateValue"
+            />
           </div>
         </div>
       </template>
 
       <template v-slot:rightColumn>
         <div>
-          <h2>Your estimated auto payment will be:</h2>
-          <div class="right-column">
-            <div class="amount">
-              <h1>${{ autoPayment }}</h1>
-            </div>
+          <div class="output">
+            <p id="p-head">Your estimated auto payment will be:</p>
+            <h1>${{ autoPayment }}</h1>
             <div class="row">
               <div class="column">
-                <div class="card">
-                  <div class="card-header">Loan Amount:</div>
+                <div class="cards">
+                  <div class="cards-header">Loan Amount:</div>
                   <div class="card-content">
                     <h3>${{ totalLoanAmount }}</h3>
                   </div>
                 </div>
               </div>
               <div class="column">
-                <div class="card">
-                  <div class="card-header">Term (Months):</div>
+                <div class="cards">
+                  <div class="cards-header">Term (Months):</div>
                   <div class="card-content">
                     <h3>{{ termInMonths }}</h3>
                   </div>
@@ -65,9 +61,12 @@
             </div>
             <div class="disc">
               <h3>We've found offers for this result:</h3>
-              <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/auto/egret/a2_purch_insuranceoptin_nossn?icode=45710&SpId=wp-auto&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Compare Loan Offer</button>
-            <br><br>
-             <button class="dis-btn">Disclosures</button>
+
+              <button class="get-offer-button" @click="redirectToLink">
+                Get Free Loan Offer
+              </button>
+              <br /><br />
+              <button class="disc-btn">Disclosures</button>
             </div>
           </div>
         </div>
@@ -105,7 +104,11 @@ export default {
         this.termInMonths
       );
     },
+    redirectToLink() {
+      window.location.href = "https://www.v2solutions.com/#";
+    },
   },
+
   created() {
     this.calculateAutoPayment();
   },
@@ -115,5 +118,5 @@ export default {
 
 
 <style scoped>
-@import "../../apps/assets/auto-loan-lite.css";
+@import "../../apps/assets/style.css";
 </style>

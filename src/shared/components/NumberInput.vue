@@ -2,7 +2,12 @@
   <div>
     <label :for="name">{{ label }}</label>
     <tooltip v-if="showToolTip" /><br />
-    <input :type="type" :id="name" v-model="inputValue" @input="emitUpdateValue" />
+    <input
+      :type="type"
+      :id="name"
+      v-model="inputValue"
+      @input="emitUpdateValue"
+    />
   </div>
 </template>
 
@@ -33,10 +38,7 @@ export default {
 };
 </script>
 
-<style>
-input {
-  padding: 10px;
-  width: 360px;
-  margin: 5px;
-}
+<style scoped>
+@import "../../../apps/assets/style.css";
 </style>
+

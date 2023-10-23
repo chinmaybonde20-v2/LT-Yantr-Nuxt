@@ -2,109 +2,103 @@
   <div>
     <DefaultLayout>
       <template v-slot:leftColumn>
-        <div class="inputs">
-          <div class="in-grp">
-            <!-- Input 1 -->
-            <div class="input-group">
-              <NumberInput
-                name="totalBalance"
-                label="Total Balance of All Loans"
-                type="number"
-                :value="totalBalance"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 2 -->
-            <div class="input-group">
-              <NumberInput
-                name="numPaymentsLeft"
-                label="Number of Monthly Payments Left on Loans"
-                type="number"
-                :value="numPaymentsLeft"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Input 3 -->
-            <div class="input-group">
-              <NumberInput
-                name="totalMonthlyPayment"
-                label="Total Monthly Payment"
-                type="number"
-                :value="totalMonthlyPayment"
-                @input-change="updateValue"
-              />
-            </div>
-            <!-- Dropdown 1 -->
-            
-            <div class="input-group">
+        <div class="input-box">
+          <!-- Input 1 -->
+          <div class="input">
+            <NumberInput
+              name="totalBalance"
+              label="Total Balance of All Loans"
+              type="number"
+              :value="totalBalance"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 2 -->
+          <div class="input">
+            <NumberInput
+              name="numPaymentsLeft"
+              label="Number of Monthly Payments Left on Loans"
+              type="number"
+              :value="numPaymentsLeft"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Input 3 -->
+          <div class="input">
+            <NumberInput
+              name="totalMonthlyPayment"
+              label="Total Monthly Payment"
+              type="number"
+              :value="totalMonthlyPayment"
+              @input-change="updateValue"
+            />
+          </div>
+          <!-- Dropdown 1 -->
 
-              <Dropdown
-                label="Refinance Rate Term:"
-                :options="dropdownOptions"
-                :selectedOption="tenure"
-                @tenure-change="updateTenure"
-                :showToolTip="showToolTip"
-              />
-            </div>
-            <!-- Input 4 -->
-            <div class="input-group">
-              <NumberInput
-                name="refinanceInterestRate"
-                label="Refinance Interest Rate"
-                type="number"
-                :value="refinanceInterestRate"
-                @input-change="updateValue"
-                :showToolTip="showToolTip"
-              />
-            </div>
+          <div class="input">
+            <Dropdown
+              label="Refinance Rate Term:"
+              :options="dropdownOptions"
+              :selectedOption="tenure"
+              @tenure-change="updateTenure"
+              :showToolTip="showToolTip"
+            />
+          </div>
+          <!-- Input 4 -->
+          <div class="input">
+            <NumberInput
+              name="refinanceInterestRate"
+              label="Refinance Interest Rate"
+              type="number"
+              :value="refinanceInterestRate"
+              @input-change="updateValue"
+              :showToolTip="showToolTip"
+            />
           </div>
         </div>
       </template>
 
       <template v-slot:rightColumn>
         <div>
-          <h1>Your estimated monthly savings would be:</h1>
-          <div class="right-column">
-            <div class="amount">
-              <h1>{{ monthlyPayment }}</h1>
-            </div>
+          <div class="output">
+            <p id="p1">Your estimated monthly savings would be:</p>
+            <h1>{{ monthlyPayment }}</h1>
+            <p id="p2">Lifetime Savings: {{ lifetimeSavings }}</p>
 
-            <h3>Lifetime Savings: {{ lifetimeSavings }}</h3>
-            
-            <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/student/refinance/'">View Free Loan Offers</button>
-
-
+            <button class="get-offer-button" @click="redirectToLink">
+              View Free Loan Offers
+            </button>
           </div>
-          <hr />
-          <!-- Table -->
+
           <div class="mb-mt">
-            <h4>Student loan refinance breakdown</h4>
+            <hr>
+            <p id="p1">Student loan refinance breakdown</p>
             <div class="table-responsive">
-              <table class="table table-bordered table-striped">
+              <table class="table">
                 <tr>
-                  <th></th>
-                  <th><b>Current Loan</b></th>
-                  <th><b>Refinanced Loan</b></th>
+                  <th class="th"></th>
+                  <th class="th"><b>Current Loan</b></th>
+                  <th class="th"><b>Refinanced Loan</b></th>
                 </tr>
                 <tr>
-                  <td><b>Interest Rate</b></td>
-                  <td>{{ currentLoanInterestRate.toFixed(2) }} %</td>
-                  <td>{{ refinanceLoanInterestRate.toFixed(2) }} %</td>
+                  <td class="td"><b>Interest Rate</b></td>
+                  <td class="td">{{ currentLoanInterestRate.toFixed(2) }} %</td>
+                  <td class="td">{{ refinanceLoanInterestRate.toFixed(2) }} %</td>
                 </tr>
                 <tr>
-                  <td><b>Monthly Payment</b></td>
-                  <td>${{ currentLoanMonthlyPayment.toFixed(2) }}</td>
-                  <td>${{ refinanceLoanMonthlyPayment.toFixed(2) }}</td>
+                  <td class="td"><b>Monthly Payment</b></td>
+                  <td class="td">${{ currentLoanMonthlyPayment.toFixed(2) }}</td>
+                  <td class="td">${{ refinanceLoanMonthlyPayment.toFixed(2) }}</td>
                 </tr>
                 <tr>
-                  <td><b>Months to Pay Off</b></td>
-                  <td>{{ currentLoanMonthsToPayOff }} months</td>
-                  <td>{{ refinanceLoanMonthsToPayOff }} months</td>
+                  <td class="td"><b>Months to Pay Off</b></td>
+                  <td class="td">{{ currentLoanMonthsToPayOff }} months</td>
+                  <td class="td">{{ refinanceLoanMonthsToPayOff }} months</td>
                 </tr>
                 <tr>
-                  <td><b>Total Cost of Loan</b></td>
-                  <td>${{ currentLoanTotalCost.toFixed(2) }}</td>
-                  <td>${{ refinanceLoanTotalCost.toFixed(2) }}</td>
+                  <td class="td"><b>Total Cost of Loan</b></td>
+                  <td class="td">${{ currentLoanTotalCost.toFixed(2) }}</td>
+                  <td class="td">${{ refinanceLoanTotalCost.toFixed(2) }}</td>
                 </tr>
               </table>
             </div>
@@ -145,7 +139,7 @@ export default {
         { value: 5, label: "5 Years" },
         { value: 10, label: "10 Years" },
       ],
-      showToolTip : true
+      showToolTip: true,
     };
   },
   methods: {
@@ -193,6 +187,9 @@ export default {
       this.currentLoanTotalCost = totalMonthlyPayment * numPaymentsLeft;
       this.refinanceLoanTotalCost = refiMonthlyPayment * (tenure * 12);
     },
+    redirectToLink() {
+      window.location.href = "https://www.v2solutions.com/#";
+    },
   },
   created() {
     this.calculateMonthlyPayment();
@@ -201,5 +198,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../apps/assets/student-loan-refinance.css";
+@import "../../apps/assets/style.css";
 </style>

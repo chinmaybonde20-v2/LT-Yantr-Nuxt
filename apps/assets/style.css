@@ -1,0 +1,328 @@
+/* Common */
+h1 {
+  font-size: 80px;
+  font-weight: 700;
+  color: #2a8eec;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2a8eec;
+}
+
+h3 {
+  font-size: 27px;
+  text-align: center;
+}
+
+#p1 {
+  text-align: center;
+  font-size: 25px;
+}
+
+#p2 {
+  font-size: 20px;
+}
+
+#p3 {
+  font-size: 25px;
+  color: #2a8eec;
+}
+
+#p-head {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Common layout slot */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column {
+  flex: 1;
+  padding: 20px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid rgb(224, 223, 223);
+}
+
+.right-column {
+  flex: 1;
+  padding: 20px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inputs */
+.input-box {
+  background-color: #f1f3f3;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.input {
+  padding: 15px;
+}
+
+label {
+  color: #444;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+input {
+  padding: 10px;
+  width: 360px;
+  margin: 5px;
+  color: #444;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.option {
+  padding: 10px;
+  width: 385px;
+  margin: 5px;
+  color: #444;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+
+/* Outputs */
+.output {
+  padding: 20px;
+  text-align: center;
+}
+
+
+/* Buttons */
+.get-offer-button {
+  padding: 15px;
+  width: 300px;
+  font-size: 20px;
+  background-color: #00aeef;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 65px;
+  margin-top: 20px;
+}
+
+
+/* Index Page */
+
+.cards-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  border: solid black 1px;
+  width: 300px;
+  text-align: center;
+  margin: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.primary-txt {
+  font-size: 32px;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  margin: 15px 0;
+}
+
+.btn {
+  padding: 10px;
+  background-color: #1abc9c;
+  ;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #189e83;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  /* Dark background color */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  /* Add shadow */
+}
+
+.navbar-logo img {
+  height: 60px;
+  width: 250px;
+}
+
+.navbar-links ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links ul li {
+  font-size: 18px;
+  color: #fff;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* auto-loan-lite */
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cards {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  width: 250px;
+  height: 100px;
+  margin: 20px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+}
+
+.cards-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+.disc {
+  text-align: center;
+}
+
+.disc-btn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Student refinance */
+
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table,
+.th,
+.td {
+  border: 1px solid #ccc;
+}
+
+.th,
+.td {
+  padding: 8px;
+  text-align: left;
+}
+
+.th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* debt-consolidation */
+.table-flex {
+  text-align: center;
+  font-size: 25px;
+  text-align: left;
+}
+
+.home-eq {
+  text-decoration: none;
+  color: #2a8eec;
+}
+
+/* Auto refinance */
+.input-top {
+  background-color: #f1f3f3;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  margin: 20px 40px 20px 40px
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.vs {
+  margin: 0 40px 0 40px;
+}

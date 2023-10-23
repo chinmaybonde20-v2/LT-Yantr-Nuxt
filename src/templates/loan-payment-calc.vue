@@ -2,53 +2,49 @@
   <div>
     <DefaultLayout>
       <template v-slot:leftColumn>
-        <div class="inputs">
-          <div class="in-grp">
-            <div class="input-group">
-              <NumberInput
-                name="amount"
-                label="Loan Amount"
-                type="number"
-                :value="amount"
-                @input-change="updateValue"
-                :showToolTip="showToolTip"
-              />
-             
-            </div>
-            <div class="input-group">
-              <NumberInput
-                name="interest"
-                label="Loan Interest"
-                type="number"
-                :value="interest"
-                @input-change="updateValue"
-                :showToolTip="showToolTip"
-              />
-            </div>
-            <div class="input-group">
-              <Dropdown
-                label="Loan Tenure"
-                :options="dropdownOptions"
-                :selectedOption="tenure"
-                @tenure-change="updateTenure"
-                :showToolTip="showToolTip"
-              />
-            </div>
+        <div class="input-box">
+          <div class="input">
+            <NumberInput
+              name="amount"
+              label="Loan Amount"
+              type="number"
+              :value="amount"
+              @input-change="updateValue"
+              :showToolTip="showToolTip"
+            />
+          </div>
+          <div class="input">
+            <NumberInput
+              name="interest"
+              label="Loan Interest"
+              type="number"
+              :value="interest"
+              @input-change="updateValue"
+              :showToolTip="showToolTip"
+            />
+          </div>
+          <div class="input">
+            <Dropdown
+              label="Loan Tenure"
+              :options="dropdownOptions"
+              :selectedOption="tenure"
+              @tenure-change="updateTenure"
+              :showToolTip="showToolTip"
+            />
           </div>
         </div>
       </template>
 
       <template v-slot:rightColumn>
-        <div class="right-column">
+        <div class="output">
           <div class="amount">
-            <p>Your monthly payment will be:</p>
+            <p id="p1">Your monthly payment will be:</p>
             <h1>${{ monthlyPayment }}</h1>
-            <p>Ready for the next step?</p>
+            <p id="p2">Ready for the next step?</p>
           </div>
-
-          <button class="get-offer-button" onclick="window.location.href = 'https:&#47;&#47;www.lendingtree.com/forms/mortgage/pecan/refi_sldr_pg_msg?rcode=10000&abandon=false&icode=47770&SpId=ns-calc-loan-payment&esourceid=6131666&cchannel=seo&cepage=%2fyantr%2fapps%2finflation.html&sessionid=d542b553-e19d-4699-bb89-ca3708f5b031&mta=1'">Get Free Loan Offer</button>
-
-
+          <button class="get-offer-button" @click="redirectToLink">
+            Get Free Loan Offer
+          </button>
         </div>
       </template>
     </DefaultLayout>
@@ -101,6 +97,9 @@ const calculateMonthlyPayment = () => {
   );
   monthlyPayment.value = result;
 };
+const redirectToLink = () => {
+  window.location.href = "https://www.v2solutions.com/#";
+};
 
 watch([amount, interest, tenure], calculateMonthlyPayment);
 
@@ -108,5 +107,5 @@ onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>
-@import "../../apps/assets/loan-payment-calc.css";
+@import "../../apps/assets/style.css";
 </style>
