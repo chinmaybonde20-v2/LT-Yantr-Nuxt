@@ -143,21 +143,23 @@ input {
 }
 
 .card {
-  padding: 10px;
-  border: solid black 1px;
-  width: 300px;
   text-align: center;
   margin: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .primary-txt {
   font-size: 32px;
   font-family: Lato, Helvetica, Arial, sans-serif;
-  color: #333;
+  color: #34495E;
   text-align: center;
+  margin-top: 30px;
 }
 
 .card-content {
@@ -180,7 +182,7 @@ input {
 
 .btn {
   padding: 10px;
-  background-color: #1abc9c;
+  background-color: #3084d3;
   ;
   color: white;
   text-align: center;
@@ -193,7 +195,27 @@ input {
 }
 
 .btn:hover {
-  background-color: #189e83;
+  background-color: #296297;
+}
+.dropdown {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.15s ease-in-out;
+  margin-left: 10px;
+}
+
+.dropdown:focus {
+  border-color: #df4e0b;
+}
+
+.country-selector {
+  display: flex;
+  align-items: center;
 }
 
 /* Navbar */
@@ -325,4 +347,52 @@ input {
 
 .vs {
   margin: 0 40px 0 40px;
+}
+
+/* Ally modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #b4b4b4;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+/* Tooltip */
+.modal-button{
+  border: none;
+  
+}
+.question-mark {
+  font-size: 12px;
+  border: none;
+}
+.circle {
+  width: 13px; /* Adjust the size as needed */
+  height: 13px;
+  background-color: transparent; /* Transparent background for hollow circle */
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 50%; /* Makes it a circle */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  color: #007bff; /* Blue text color */
+  font-size: 24px; /* Adjust the font size as needed */
 }

@@ -51,18 +51,16 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
-import NumberInput from "../shared/components/NumberInput.vue";
-import Dropdown from "../shared/components/Dropdown.vue";
-import DefaultLayout from "../shared/layout/DefaultLayout.vue";
-import payment from "../shared/helpers/payment.js";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import Dropdown from "~/src/shared/components/Dropdown.vue";
+import DefaultLayout from "~/src/shared/layout/DefaultLayout.vue";
+import payment from "~/src/shared/helpers/payment";
 
 const amount = ref(50000);
 const interest = ref(0.001);
 const tenure = ref(30);
-const monthlyPayment = ref("");
 const dropdownOptions = ref([
   { value: 1, label: "1 Year" },
   { value: 2, label: "2 Years" },
@@ -77,17 +75,20 @@ const dropdownOptions = ref([
   { value: 40, label: "40 Years" },
 ]);
 const showToolTip = ref(true);
-const updateValue = (name, value) => {
-  if (name === "amount") {
-    amount.value = value;
-  } else if (name === "interest") {
-    interest.value = value;
+
+const updateValue = (data) => {
+  if (data.name === "amount") {
+    amount.value = data.value;
+  } else if (data.name === "interest") {
+    interest.value = data.value;
   }
 };
 
 const updateTenure = (newTenure) => {
   tenure.value = newTenure;
 };
+
+const monthlyPayment = ref("");
 
 const calculateMonthlyPayment = () => {
   const result = payment.calculateMonthlyPayment(
@@ -97,15 +98,15 @@ const calculateMonthlyPayment = () => {
   );
   monthlyPayment.value = result;
 };
+
 const redirectToLink = () => {
   window.location.href = "https://www.v2solutions.com/#";
 };
 
 watch([amount, interest, tenure], calculateMonthlyPayment);
-
 onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>
-@import "../../apps/assets/style.css";
+@import "@/apps/assets/style.css";
 </style>

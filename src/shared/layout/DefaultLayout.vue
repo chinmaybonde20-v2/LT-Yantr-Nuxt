@@ -7,7 +7,6 @@
       <slot name="rightColumn"></slot>
     </div>
   </div>
-  <hr />
 </template>
 
 <script setup>

@@ -10,7 +10,7 @@
               label="Balance:"
               type="number"
               :value="loanBalance"
-              @input-change="updateValue('loanBalance', $event)"
+              @input-change="updateValue"
             />
           </div>
           <!-- Input 2 -->
@@ -20,7 +20,7 @@
               label="Interest Rate:"
               type="number"
               :value="interestRate"
-              @input-change="updateValue('interestRate', $event)"
+              @input-change="updateValue"
             />
           </div>
           <!-- Input 3 -->
@@ -30,7 +30,7 @@
               label="Monthly Payment:"
               type="number"
               :value="monthlyPayment"
-              @input-change="updateValue('monthlyPayment', $event)"
+              @input-change="updateValue"
             />
             <p>OR</p>
           </div>
@@ -42,7 +42,7 @@
               label="Payoff Timeframe:"
               type="number"
               :value="payoffTimeframe"
-              @input-change="updateValue('payoffTimeframe', $event)"
+              @input-change="updateValue"
             />
           </div>
         </div>
@@ -78,67 +78,63 @@
     </DefaultLayout>
   </div>
 </template>
-<script>
-import NumberInput from "../shared/components/NumberInput.vue";
-import DefaultLayout from "../shared/layout/DefaultLayout.vue";
 
-export default {
-  components: {
-    NumberInput,
-    DefaultLayout,
-  },
-  data() {
-    return {
-      loanBalance: 9000,
-      interestRate: 8.0,
-      monthlyPayment: 125.0,
-      payoffTimeframe: 0,
-      newMonthlyPayment: null,
-      payOffDebts: 98,
-    };
-  },
-  methods: {
-    updateValue(name, value) {
-      // Parse input values as floats
-      this[name] = parseFloat(value);
-      this.calculateValues();
-    },
-    calculateValues() {
-      const r = this.interestRate / 100 / 12;
-      const L = this.loanBalance;
-      const P = this.monthlyPayment;
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import DefaultLayout from "~/src/shared/layout/DefaultLayout.vue";
 
-      if (this.payoffTimeframe === 0) {
-        // Calculate the number of months to pay off the debt
-        const n = -(Math.log(1 - (r * P) / L) / Math.log(1 + r));
-        this.payOffDebt = Math.round(n);
-        // console.log("payOffDebt",payOffDebt.value);
-      } else {
-        this.payOffDebt = this.payoffTimeframe;
-        // console.log("payOffDebt",payOffDebt.value);
-      }
+const loanBalance = ref(9000);
+const interestRate = ref(8.0);
+const monthlyPayment = ref(125.0);
+const payoffTimeframe = ref(0);
+const newMonthlyPayment = ref(null);
+const payOffDebts = ref(98);
 
-      if (this.monthlyPayment === 0) {
-        // Calculate the monthly payment
-        const n = this.payOffDebt;
-        this.newMonthlyPayment = (
-          (L * (r * Math.pow(1 + r, n))) /
-          (Math.pow(1 + r, n) - 1)
-        ).toFixed(2);
-      } else {
-        this.newMonthlyPayment = this.monthlyPayment;
-      }
-    },
-    redirectToLink() {
-      window.location.href = "https://www.v2solutions.com/#";
-    },
-  },
-  created() {
-    this.calculateValues();
-  },
+
+const updateValue = (data) => {
+  if (data.name === "loanBalance") {
+    loanBalance.value = data.value;
+  } else if (data.name === "interestRate") {
+    interestRate.value = data.value;
+  } else if (data.name === "monthlyPayment") {
+    monthlyPayment.value = data.value;
+  } else if (data.name === "payoffTimeframe") {
+    payoffTimeframe.value = data.value;
+  }
+  calculateValues()
 };
+
+const calculateValues = () => {
+  const r = interestRate.value / 100 / 12;
+  const L = loanBalance.value;
+  const P = monthlyPayment.value;
+
+  if (payoffTimeframe.value === 0) {
+    const n = -(Math.log(1 - (r * P) / L) / Math.log(1 + r));
+    payOffDebts.value = Math.round(n);
+  } else {
+    payOffDebts.value = payoffTimeframe.value;
+  }
+
+  if (monthlyPayment.value === 0) {
+    const n = payOffDebts.value;
+    newMonthlyPayment.value = (
+      (L * (r * Math.pow(1 + r, n))) /
+      (Math.pow(1 + r, n) - 1)
+    ).toFixed(2);
+  } else {
+    newMonthlyPayment.value = monthlyPayment.value;
+  }
+};
+
+const redirectToLink = () => {
+  window.location.href = "https://www.v2solutions.com/#";
+};
+
+onMounted(calculateValues);
 </script>
+
 <style scoped>
-@import "../../apps/assets/debt-consodilation.css";
-@import "../../apps/assets/style.css";
+@import "@/apps/assets/style.css";
 </style>

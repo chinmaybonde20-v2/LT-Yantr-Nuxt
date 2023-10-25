@@ -1,15 +1,15 @@
 <template>
   <div>
-   <AppNavbar />
-    <CalcList />
+    <AppNavbar />
+    <HomePage />
   </div>
 </template>
   
-<script setup>
-import CalcList from "./LT-Yantr-Widgets/calc-list.vue";
-import AppNavbar from "./app-navbar.vue";
+<script setup lang="ts">
+import HomePage from "./home-page/home-page.vue";
+import AppNavbar from "~/src/shared/components/AppNavbar.vue";
 </script>
   
 <style>
-
+/*  */
 </style>

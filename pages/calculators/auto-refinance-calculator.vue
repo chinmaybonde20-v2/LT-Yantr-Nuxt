@@ -55,10 +55,13 @@
           <div>
             <Dropdown
               label="Loan Term:"
+              :showToolTip="showToolTip"
+              @tenure-change="updateTenure"
+              
               :options="dropdownOptions"
               :selectedOption="tenure"
-              @tenure-change="updateTenure"
-              :showToolTip="showToolTip"
+              
+              
             />
           </div>
           <div>
@@ -143,9 +146,9 @@
   
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import NumberInput from "../shared/components/NumberInput.vue";
-import Dropdown from "../shared/components/Dropdown.vue";
-import tooltip from "../shared/components/tooltip.vue";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import Dropdown from "~/src/shared/components/Dropdown.vue";
+import tooltip from "~/src/shared/components/tooltip.vue";
 
 const currentBalance = ref(45000);
 const currentMonthlyPayment = ref(650);
@@ -167,14 +170,18 @@ const dropdownOptions = ref([
 ]);
 const showToolTip = ref(true);
 const estimatedSavings = ref(0);
-const updateValue = (name, value) => {
-  if (name === "currentBalance") currentBalance.value = value;
-  else if (name === "currentMonthlyPayment")
-    currentMonthlyPayment.value = value;
-  else if (name === "currentInterestRate") currentInterestRate.value = value;
-  else if (name === "refinanceLoanAmount") refinanceLoanAmount.value = value;
-  else if (name === "refinanceInterestRate")
-    refinanceInterestRate.value = value;
+
+
+
+
+const updateValue = (data) => {
+  if (data.name === "currentBalance") currentBalance.value = data.value;
+  else if (data.name === "currentMonthlyPayment")
+    currentMonthlyPayment.value = data.value;
+  else if (data.name === "currentInterestRate") currentInterestRate.value = data.value;
+  else if (data.name === "refinanceLoanAmount") refinanceLoanAmount.value = data.value;
+  else if (data.name === "refinanceInterestRate")
+    refinanceInterestRate.value = data.value;
 
   calculateSavings();
 };
@@ -214,7 +221,7 @@ onMounted(calculateSavings);
 
   
   <style scoped>
-@import "../../apps/assets/style.css";
+@import "@/apps/assets/style.css";
 </style>
   
 

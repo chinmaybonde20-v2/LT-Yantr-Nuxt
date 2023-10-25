@@ -62,8 +62,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import NumberInput from "../shared/components/NumberInput.vue";
-import Dropdown from "../shared/components/Dropdown.vue";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import Dropdown from "~/src/shared/components/Dropdown.vue";
 
 const dollarAmount = ref(100);
 const startYear = ref(2001);

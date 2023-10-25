@@ -9,7 +9,7 @@
                 label="Current Appraised Value of Home:"
                 type="number"
                 :value="currAprValue"
-                @input="updateValue('currAprValue', $event)"
+                @input-change="updateValue"
                 :showToolTip="showToolTip"
               />
             </div>
@@ -19,7 +19,7 @@
                 label="How Much Do You Owe on Home:"
                 type="number"
                 :value="oweAmount"
-                @input="updateValue('oweAmount', $event)"
+                @input-change="updateValue"
                 :showToolTip="showToolTip"
               />
             </div>
@@ -53,10 +53,9 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
-import NumberInput from "../shared/components/NumberInput.vue";
-import Dropdown from "../shared/components/Dropdown.vue";
-import DefaultLayout from "../shared/layout/DefaultLayout.vue";
-import payment from "../shared/helpers/payment.js";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import DefaultLayout from "~/src/shared/layout/DefaultLayout.vue";
+import Dropdown from "~/src/shared/components/Dropdown.vue";
 
 const currAprValue = ref(225000);
 const oweAmount = ref(165000);
@@ -70,11 +69,11 @@ const creditScoreOptions = ref([
 const showToolTip = ref(true);
 const homeEquityLoan = ref("");
 
-const updateValue = (name, value) => {
-  if (name === "currAprValue") {
-    currAprValue.value = value;
-  } else if (name === "oweAmount") {
-    oweAmount.value = value;
+const updateValue = (data) => {
+  if (data.name === "currAprValue") {
+    currAprValue.value = data.value;
+  } else if (data.name === "oweAmount") {
+    oweAmount.value = data.value;
   }
 };
 
@@ -97,5 +96,5 @@ onMounted(calculateHomeEquityLoan);
 </script>
 
 <style scoped>
-@import "../../apps/assets/style.css";
+@import "@/apps/assets/style.css";
 </style>

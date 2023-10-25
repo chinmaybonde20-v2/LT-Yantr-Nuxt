@@ -81,9 +81,9 @@
 </template>
 
 <script setup lang="ts">
-import DefaultLayout from "../shared/layout/DefaultLayout.vue";
-import NumberInput from "../shared/components/NumberInput.vue";
-import Dropdown from "../shared/components/Dropdown.vue";
+import NumberInput from "~/src/shared/components/NumberInput.vue";
+import DefaultLayout from "~/src/shared/layout/DefaultLayout.vue";
+import Dropdown from "~/src/shared/components/Dropdown.vue";
 
 const currMortBalance = ref(250000);
 const monthlyPayments = ref(1950);
@@ -97,13 +97,13 @@ const dropdownOptions = ref([
 ]);
 const showToolTip = ref(true);
 
-const updateValue = (name, value) => {
-  if (name === "currMortBalance") {
-    currMortBalance.value = value;
-  } else if (name === "monthlyPayments") {
-    monthlyPayments.value = value;
-  } else if (name === "newIntRate") {
-    newIntRate.value = value;
+const updateValue = (data) => {
+  if (data.name === "currMortBalance") {
+    currMortBalance.value = data.value;
+  } else if (data.name === "monthlyPayments") {
+    monthlyPayments.value = data.value;
+  } else if (data.name === "newIntRate") {
+    newIntRate.value = data.value;
   }
   calculateMonthlyPayment();
 };
@@ -144,5 +144,5 @@ onMounted(calculateMonthlyPayment);
 </script>
 
 <style scoped>
-@import "../../apps/assets/style.css";
+@import "@/apps/assets/style.css";
 </style>

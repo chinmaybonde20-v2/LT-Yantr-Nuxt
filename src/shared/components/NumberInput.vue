@@ -11,34 +11,28 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { defineProps, ref, defineEmits } from "vue";
 import tooltip from "./tooltip.vue";
-export default {
-  components: {
-    tooltip,
-  },
-  props: {
-    name: String,
-    label: String,
-    type: String,
-    value: String,
-    showToolTip: Boolean,
-  },
-  data() {
-    return {
-      inputValue: this.value, // Initialize inputValue with the prop value
-    };
-  },
-  methods: {
-    emitUpdateValue() {
-      this.$emit("input", this.inputValue); // Emit the input event with the new value
-      this.$emit("input-change", this.name, this.inputValue); // Emit your custom input-change event
-    },
-  },
+
+const props = defineProps({
+  name: String,
+  label: String,
+  type: String,
+  value: String,
+  showToolTip: Boolean,
+  chinmayBoxInParent: String,
+});
+
+const inputValue = ref(props.value);
+
+const emits = defineEmits(["input-change"]);
+
+const emitUpdateValue = () => {
+  emits("input-change", { name: props.name, value: inputValue.value });
 };
 </script>
 
 <style scoped>
 @import "../../../apps/assets/style.css";
 </style>
-
